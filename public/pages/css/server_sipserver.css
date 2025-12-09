@@ -1,0 +1,37 @@
+#sipservers{    
+	padding: 0 100px 0 100px;
+}
+#server_state{
+	padding: 50px;
+	border: 1px solid #539AD7;
+}
+.controlBtn{
+    width: 50%;
+    color: #34495e;
+}
+.slimScrollDiv {
+    height: 70px!important;
+}
+.scroller{
+    height: 70px!important;
+}
+tr.bg_selected{
+	background-color: #739DD4!important;
+	color: black;
+}
+button#addServerBtn {
+    height: 26px;
+    width: 112px;
+    padding-left: 13px;
+    letter-spacing: 10px;
+    background: url(/adminpage/login/btn_noicon.png) no-repeat;
+    border-style: none;
+    float: left;
+    color: #6b8db1;
+    margin: 10px 30px 0px 10px;
+    margin-bottom: -32px;
+    left: 100px;
+    position: absolute;
+    top: 310px;
+    z-index: 100;
+    font-weight: bold;}

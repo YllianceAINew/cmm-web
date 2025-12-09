@@ -1,0 +1,131 @@
+body {
+        background: url('/adminpage/login/login.png') no-repeat center center fixed;}
+    .logo {
+        display: inline-block;
+        width: 85%;
+        margin-top: 40px;}
+    table {
+        border-collapse: none;}
+    .login .contents {
+        width: 570px;
+        height: 480px;
+        margin: 0 auto;
+        margin-bottom: 0px;
+        margin-top: 15%;
+        background-image: url('/adminpage/login/dialog.png') ;
+        background-repeat: no-repeat;}
+    .login .tb_login {
+        padding-top: 50px;
+        padding-left: 50px;
+        padding-right: 50px;
+        font-family: KP CheonRiMa;
+        font-size: 22px;
+        color: #28579F;
+        font-weight: bold;
+        border-spacing: 0px 9px;}
+    tbody {
+        display: table-row-group;
+        vertical-align: middle;
+        border-color: inherit;}
+    .form-control {
+        width: 316px;
+        height: 40px;
+        padding: 6px 12px;
+        font-size: 20px;
+        line-height: 1.428571429;
+        vertical-align: middle;
+        background-color: #fff;
+        background-image: none;
+        border: 1px solid rgb(5, 185, 255);
+        transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;}
+    .btn-green-pull-right {
+        background-image: url("/adminpage/login/2_1.png");
+        margin: 0 auto;
+        width: 110px;
+        height: 34px;
+        padding: 0px;
+        text-align: center;
+        margin-left: 15%;
+        border-style: none;
+        margin-top: 10px;
+        font-family: KP CheonRiMa;
+        font-size: 22px;
+        color: #FFFFFF;
+        font-weight: bold;}
+    .btn-green-pull-right:hover {
+        background-image: url("/adminpage/login/2_1.png");
+        margin: 0 auto;
+        width: 110px;
+        height: 34px;
+        padding: 0px;
+        text-align: center;
+        margin-left: 15%;
+        margin-top: 10px;
+        font-family: KP CheonRiMa;
+        font-size: 22px;
+        color: #FFFFFF;
+        font-weight: bold;
+        border-top: 1px solid #709ed0;
+        border-left: 1px solid #709ed0;
+        border-right: 2px solid #709ed0;
+        border-bottom: 2px solid #709ed0;}
+    .btn-green-pull-right:active {
+        background-image: url("/adminpage/login/2_3.png");
+        margin: 0 auto;
+        width: 110px;
+        height: 34px;
+        padding: 0px;
+        text-align: center;
+        margin-left: 15%;
+        border-style: none;
+        margin-top: 10px;
+        font-family: KP CheonRiMa;
+        font-size: 22px;
+        color: #FFFFFF;
+        font-weight: bold;}
+    .btn-green-pull-end {
+        background-image: url("/adminpage/login/3.png");
+        margin: 0 auto;
+        width: 110px;
+        height: 34px;
+        padding: 0px;
+        text-align: center;
+        margin-left: 11px;
+        border-style: none;
+        margin-top: 10px;
+        font-family: KP CheonRiMa;
+        font-size: 22px;
+        color: black;
+        font-weight: bold;}
+    .btn-green-pull-end:hover {
+        background-image: url("/adminpage/login/3.png");
+        margin: 0 auto;
+        width: 110px;
+        height: 34px;
+        padding: 0px;
+        text-align: center;
+        margin-left: 11px;
+        /*border-style: none;*/
+        margin-top: 6px;
+        font-family: KP CheonRiMa;
+        font-size: 22px;
+        color: black;
+        font-weight: bold;
+        border-top: 1px solid #709ed0;
+        border-left: 1px solid #709ed0;
+        border-right: 2px solid #709ed0;
+        border-bottom: 2px solid #709ed0;}
+    .btn-green-pull-end:active {
+        background-image: url("/adminpage/login/5.png");
+        margin: 0 auto;
+        width: 110px;
+        height: 34px;
+        padding: 0px;
+        text-align: center;
+        margin-left: 11px;
+        border-style: none;
+        margin-top: 10px;
+        font-family: KP CheonRiMa;
+        font-size: 22px;
+        color: black;
+        font-weight: bold;}

@@ -1,0 +1,421 @@
+<?php
+	$messages['already'] = "이미 존재하는 가입자입니다.";
+	$messages['success'] = "성공하였습니다.";
+	$messages['ok'] = "성공";
+	$messages['notexist'] = "실패 :수신자가 존재하지 않습니다.";
+	$messages['nothave'] = "실패 :대화권한 없음";
+	$messages['sendstop'] = "실패 :송신자가 차단되였습니다.";
+	$messages['rcvdstop'] = "실패 :수신자가 차단되였습니다.";
+	$messages['sndlevel'] = "실패 :송신자급수가 차단되였습니다.";
+	$messages['rcvdlevel'] = "실패 :수신자급수가 차단되였습니다.";
+	$messages['hint'] = "알림";
+	$messages['alert'] ="경고";
+	$messages['error'] = "오유";
+
+	//common
+	$messages['btn_delete'] = '삭 제';
+	$messages['delete'] = '삭제';
+	$messages['edit'] = '편집';
+	$messages['btn_search'] = '검 색';
+	$messages['btn_ok'] = '확 인';
+	$messages['btn_cancel'] = '취 소';
+	$messages['name'] = '이름';
+	$messages['no'] = '번호';
+	$messages['levelist'] = '급수목록';
+	$messages['from'] = '부터';
+	$messages['to'] = '까지';
+	$messages['userid'] = '사용자ID';
+	$messages['setlevel'] = '급수호출조종';
+	$messages['userlist'] = '가입자목록';
+	$messages['register'] = '등록';
+	$messages['update'] = '갱신';
+	$messages['btn_allow'] = '적 용';
+	//title
+	$messages['site_title'] = '무선망대화체계';
+	$messages['site_version'] = '2.0';
+
+	//header
+	$messages['header_logged'] = '가입자 : ';
+	$messages['header_logout'] = '가입탈퇴';
+
+	//menu
+	$messages['menu_features'] = '분류';
+	$messages['menu_account'] = '계정관리';
+	$messages['menu_first'] = '첫페지';
+
+	$messages['menu_registration'] = '가입자관리';
+	$messages['menu_registration_request'] = '가입자등록신청접수';
+
+	$messages['menu_serverstate'] = '봉사기감시';
+	$messages['menu_serverstate_state'] = '봉사기상태';
+	$messages['menu_serverstate_callog'] = '호출리력';
+	$messages['menu_serverstate_alarmlog'] = 'XMPP봉사기경보';
+	$messages['menu_serverstate_kamailiolog'] = 'SIP봉사기경보';
+
+	$messages['menu_servermanager'] = '봉사기관리';
+	$messages['menu_servermanager_admin'] = '관리자목록';
+	$messages['menu_servermanager_setserver'] = '봉사기설정';
+	$messages['menu_servermanager_haproxy'] = '부하분배기';
+	$messages['menu_servermanager_fileserver'] = '화일전송봉사기';
+	$messages['menu_servermanager_xmppserver'] = 'XMPP봉사기';
+	$messages['menu_servermanager_sipserver'] = 'SIP봉사기';
+	$messages['menu_servermanager_sipserver_sub'] = '부분봉사기';
+	$messages['menu_servermanager_proxyserver'] = 'RTP봉사기';
+
+    $messages['menu_servermanager_irregular'] = '비규범어';
+    $messages['irregular_correct'] = "대응표";
+    $messages['irregular_incorrect'] = "비규범어";
+    $messages['irregular_regdate'] = "등록날자";
+    $messages['irregular_add'] = "비규범어 추가";
+    $messages['irregular_del'] = "비규범어 삭제";
+    $messages['irregular_message_del'] = "선택된 비규범어들을 삭제하겠습니까?";
+
+	$messages['menu_log'] = '리력관리';
+	$messages['menu_call'] = '호출리력';
+	$messages['menu_text'] = '대화리력';
+	$messages['menu_signin'] = '가입리력';
+
+	$messages['menu_logout'] = '가입탈퇴';
+	$messages['menu_servertime'] = '봉사기시간';
+	$messages['content_search_placeholder'] = 'Search···';
+	//log in
+	$messages['session_page_title'] = '가입';
+	$messages['session_site_title'] = '관리자페지';
+	
+	//footer
+	$messages['footer_adminconsole'] = '관리자페지.';
+	$messages['footer_company'] = '붉은별연구소';
+
+	//string
+	$messages['logUser'] = '가입자';
+	$messages['str_cancel'] = '를 삭제하겠습니까?';	
+	$messages['adminUser'] = '관리자';
+	$messages['level'] = '급수';
+
+	$messages['menu_dashboard'] = '첫 페지';
+
+	$messages['account_page_title'] = '계정관리';
+
+	$messages['account_editaccount_comment'] = '다음과 같은 값들을 입력하여야 합니다.';
+	$messages['account_editaccount_formhead'] = '계정편집';
+	$messages['account_content_power'] = '접근권한';
+	//관리자목록
+	$messages['account_tab_viewaccount'] = '관리자목록';
+	$messages['account_tab_registernew'] = '추 가';
+	$messages['account_tab_editaccount'] = '관리자편집';
+
+	$messages['account_thead_factory'] = '직장직위';
+	$messages['account_thead_count'] = '가입회수';
+	$messages['account_thead_date'] = '마지막 가입날자';
+
+	$messages['content_messages_account'] = '관리자를 삭제하겠습니까?';
+	$messages['content_messages_user'] = '가입자를 삭제하겠습니까?';
+	$messages['account_msg_seldelete'] = '선택된 관리자들을 삭제하겠습니까?';
+	$messages['account_msg_multidelete'] = '선택된 관리자를 삭제하겠습니까?';
+
+	$messages['account_modal_del'] = '관리자삭제';
+	$messages['account_modal_add'] = '관리자추가';
+	$messages['account_modal_hint'] = '다음과 같은 값들을 입력하여야 합니다.';
+	$messages['account_modal_id'] = 'id :';
+	$messages['account_modal_factory'] = '직장직위 :';
+	$messages['account_modal_password'] = '암호 :';
+	$messages['account_modal_confirm'] = '암호확인 :';
+	$messages['account_modal_access'] = '접근권한 :';
+	$messages['account_modal_first'] = '첫페지';
+	$messages['account_modal_admin'] = '계정관리';
+	$messages['account_modal_user'] = '가입자관리';
+	$messages['account_modal_peogram'] = '프로그람관리';
+
+	$messages['account_edit_title'] = '계정편집';
+	$messages['account_edit_refresh'] = '갱신';
+	$messages['account_edit_hint'] = '변경하려는 계정정보를 입력하여야 합니다.';
+	$messages['account_edit_admin'] = '관리자계정';
+	$messages['account_edit_setserver'] = '봉사기설정';
+	$messages['account_edit_serverstate'] = '봉사기상태';
+	$messages['account_edit_call'] = '호출리력';
+	$messages['account_edit_alert'] = '경보리력';
+	$messages['account_edit_register'] = '가입자등록신청접수';
+
+	//봉사기설정
+	$messages['setserver_title'] = '봉사기설정';
+
+	$messages['setserver_database'] = '자료기지봉사기관리';
+	$messages['setserver_database_backup'] = '여벌복사';
+	$messages['setserver_database_format'] = '초기화';
+	$messages['setserver_start'] = '시작';
+	$messages['setserver_stop'] = '중지';
+	$messages['setserver_settime'] = '시간설정';
+	$messages['setserver_setnet'] = '망설정';
+	$messages['setserver_setlog'] = '리력보관기일설정';
+	$messages['setserver_textdate'] = '대화리력 :';
+	$messages['setserver_calldate'] = '호출리력 :';
+	$messages['setserver_logdate'] = '가입리력 :';
+	$messages['setserver_alarmdate'] = '경보리력 :';
+	$messages['setserver_day'] = '하루';
+	$messages['setserver_week'] = '한주';
+	$messages['setserver_month'] = '한달';
+	$messages['setserver_setrestart'] = '봉사기상태';
+	$messages['setserver_setAllowAddr'] = '허용IP설정';
+	$messages['setserver_set'] = '설 정';
+	$messages['setserver_change'] = '변경';
+	$messages['setserver_reserver'] = '봉사기재기동';
+	$messages['setserver_stopserver'] = '봉사기중지';
+	$messages['setserver_resystem'] = 'SIP봉사기재기동';
+	$messages['kamailio'] = 'SIP봉사기';
+	$messages['openfire'] = 'XMPP봉사기';
+	$messages['adminpage'] = '관리자페지';
+	$messages['addIP'] = 'IP추가';
+	$messages['addServer'] = '봉사기추가';
+
+	//첫 페지
+	$messages['dashboard_page_title'] = '첫 페지';
+
+	$messages['dashboard_register'] = '가입자등록';
+	$messages['dashboard_login'] = '사용자가입';
+	$messages['dashboard_sort'] = '분류 :';
+	$messages['dashboard_day'] = '기간 :';
+
+	$messages['daily'] = '일별';
+	$messages['weekly'] = '주별';
+	$messages['monthly'] = '월별';
+	$messages['yearsly'] = '년별';
+
+	$messages['dashboard_ram'] = '주기억기';
+	$messages['dashboard_cpu'] = 'CPU';
+	$messages['dashboard_memory'] = '자료';
+
+	$messages['dashboard_all'] = '전체 용량 :';
+	$messages['dashboard_used'] = '사용한 용량 :';
+	$messages['dashboard_free'] = '남은 용량 :';
+
+	//봉사기상태
+	$messages['server_state'] = '봉사기상태';
+
+	$messages['state_openfire'] = '통보문대화봉사기';
+	$messages['state_info'] = '봉사기정보';
+	$messages['state_ip'] = '봉사기IP';
+	$messages['state_link'] = '련결상태';
+	$messages['state_time'] = '가동시간';
+	$messages['state_control'] = '봉사기조작';
+	$messages['state_edit'] = 'IP편집';
+	$messages['state_edit_ext'] = '외부IP:';
+	$messages['state_edit_int'] = '내부IP:';
+	$messages['state_openfire_dir'] = '봉사기서류철경로';
+	$messages['state_openfire_java'] = 'JAVA판본';
+	$messages['state_openfire_system'] = '조작체계/하드웨어';
+	$messages['state_openfire_javamem'] = 'JAVA기억기리용률';
+	$messages['state_state'] = '봉사기상태';
+	$messages['state_cpu']='CPU';
+	$messages['state_ram'] = 'RAM';
+	$messages['state_memmory'] = '기억공간';
+
+	$messages['state_kamailio'] = 'IP교환기';
+	$messages['state_kamailio_call'] = '동시통화량';
+	$messages['state_kamailio_success'] = '정상';
+	$messages['state_kamailio_danger'] = '위험';
+	$messages['state_kamailio_warn'] = '부하';
+	$messages['state_runfrom'] = '부터 가동';
+	$messages['state_used'] = '리용됨';
+
+	$messages['all'] = '총';
+	$messages['of'] = '중';
+	$messages['used'] = '사용';
+
+
+	//통화리력
+	$messages['server_callog'] = '호출리력';
+
+	$messages['callog_thead_sender'] = '발신자';
+	$messages['callog_thead_rcvd'] = '착신자';
+	$messages['callog_thead_sendtime'] = '호출시간';
+	$messages['callog_thead_rcvdtime'] = '통화시간';
+	$messages['callog_thead_result'] = '응답결과';
+
+	$messages['callog_msg_seldelete'] = '삭제하려는 호출리력을 선택하십시오.';
+	$messages['callog_msg_delete'] = '호출리력을 삭제하겠습니까?';
+	$messages['callog_msg_multidel'] = '선택된 호출리력들을 삭제하겠습니까?';
+
+	$messages['callog_modal_del'] = '호출리력삭제';
+	$messages['callog_modal_search'] = '호출리력검색';
+
+	$messages['callog_modal_del'] = '호출리력삭제';
+	$messages['callog_modal_sendtime'] = '호출시간 :';
+	$messages['callog_modal_sender'] = '발신자 :';
+	$messages['callog_modal_rcvd'] = '착신자 :';
+	$messages['callog_modal_body'] = '본문 :';
+	$messages['callog_modal_type'] = '형태 :';
+
+	//대화리력
+	$messages['textlog_msg_seldelete'] = '삭제하려는 대화리력을 선택하십시오.';
+	$messages['textlog_msg_delete'] = '대화리력을 삭제하겠습니까?';
+	$messages['textlog_msg_multidel'] = '선택된 대화리력들을 삭제하겠습니까?';
+
+	$messages['textlog_modal_del'] = '대화리력삭제';
+	$messages['textlog_modal_search'] = '대화리력검색';
+	$messages['textlog_modal_type'] = '형태';
+	$messages['textlog_thead_sender'] = '송신자';
+	$messages['textlog_thead_rcvd'] = '수신자';
+	$messages['textlog_thead_sendtime'] = '송신시간';
+	$messages['textlog_thead_rcvdtime'] = '수신시간';
+	$messages['textlog_thead_result'] = '응답결과';
+	$messages['textlog_thead_body'] = '대화내용';
+	$messages['messages'] = '통보문';
+	$messages['voice'] = '음성';
+	$messages['videoRecord'] = '동영상촬영';
+	$messages['imageRecord'] = '사진촬영';
+	$messages['music'] = '음악화일';
+	$messages['video'] = '동영상화일';
+	$messages['image'] = '그림화일';
+
+	//가입리력
+	$messages['signlog_msg_seldelete'] = '삭제하려는 가입리력을 선택하십시오.';
+	$messages['signlog_msg_delete'] = '가입리력을 삭제하겠습니까?';
+	$messages['signlog_msg_multidel'] = '선택된 가입리력들을 삭제하겠습니까?';
+
+	$messages['signlog_modal_del'] = '가입리력삭제';
+	$messages['signlog_modal_search'] = '가입리력검색';
+
+	$messages['signlog_thead_user'] = '가입자';
+	$messages['signlog_thead_signtime'] = '가입시간';
+	$messages['signlog_thead_outtime'] = '탈퇴시간';
+	$messages['signlog_modal_signtime'] = '가입시간 :';
+	$messages['signlog_modal_outtime'] = '탈퇴시간 :';
+	$messages['signlog_modal_user'] = '가입자 :';
+
+
+	//경보리력
+	$messages['server_alarmlog'] = 'XMPP봉사기경보리력';
+	$messages['server_kamailiolog'] = 'SIP봉사기경보리력';
+	$messages['alarm_thead_level'] = '준위';
+	$messages['alarm_thead_content'] = '내용';
+	$messages['alarm_thead_crttime'] = '생성시간';
+
+	$messages['alarm_msg_delete'] ='경보리력을 삭제하겠습니까?';
+	$messages['alarm_msg_seldelete'] = '삭제하려는 경보리력을 선택하십시오.';
+	$messages['alarm_msg_multidelete'] = '선택된 경보리력들을 삭제하겠습니까?';
+
+	$messages['alarm_modal_del'] = '경보리력삭제';
+	$messages['alarm_modal_search'] = '경보리력검색';
+
+	$messages['alarm_modal_crttime'] = '생성시간 :';
+	$messages['alarm_modal_body'] = '경보내용 :';
+	$messages['alarm_modal_level'] = '준위 :';
+	$messages['alarm_modal_all'] = '모두';
+	//가입자등록신청접수
+	$messages['registration_register'] = '가입자등록신청접수';
+
+	$messages['register_thead_request'] = '신청날자';
+	$messages['register_thead_citizen'] = '시민증번호';
+	$messages['register_thead_userid'] = 'id';
+	$messages['register_thead_gender'] = '성별';
+	$messages['register_thead_phone'] = '전화번호';
+	$messages['register_thead_imei'] = 'IMEI번호';
+	$messages['register_thead_imsi'] = 'IMSI번호';
+	$messages['register_thead_level'] = '급수';
+	$messages['register_thead_check'] = '검토';
+
+	$messages['register_boy'] = '남자';
+	$messages['register_girl'] = '녀자';
+
+	$messages['register_btn_allow'] = '승 인';
+	$messages['register_btn_cancel'] = '부 결';
+	$messages['register_msg_allow'] = '선택한 가입자들의 등록을 승인하겠습니까?';
+	$messages['register_msg_cancel'] = '선택한 가입자들의 등록을 부결하겠습니까?';
+	$messages['register_modal_allow'] = '가입자승인';
+	$messages['register_modal_cancel'] = '가입자부결';
+
+	$messages['detail_title'] = '가입자등록신청정보';
+	$messages['detail_return'] = '돌아가기';
+	$messages['detail_gender'] = '성별 :';
+	$messages['detail_birth'] = '생년월일 :';
+	$messages['detail_address'] = '집주소 :';
+	$messages['detail_factory'] = '직장직위 :';
+	$messages['detail_citynum'] = '시민증번호 :';
+	$messages['detail_region'] = '지역 :';
+	$messages['detail_type'] = '말단종류 :';
+	$messages['detail_phone'] = '전화번호 :';
+	$messages['detail_imsi'] = 'IMSI번호 :';
+	$messages['detail_imei'] = 'IMEI번호 :';
+	$messages['detail_group'] = '그룹 :';
+	$messages['detail_undefined'] = '미정';
+
+	//가입자목록
+	$messages['summary_thead_state'] = '가입상태';
+	$messages['summary_thead_id'] = '가입자ID';
+	$messages['summary_thead_phone'] = '전화번호';
+	$messages['summary_thead_imsi'] = 'IMSI';
+	$messages['summary_thead_imei'] = 'IMEI';
+	$messages['summary_thead_name'] = '가입자이름';
+	$messages['summary_thead_level'] = '급수';
+	$messages['summary_thead_stop'] = '차단';
+
+	$messages['summary_msg_delete'] = '가입자를 삭제하겠습니까?';
+	$messages['summary_msg_seldelete'] = '삭제하려는 가입자를 선택하십시오.';
+	$messages['summary_msg_multisel'] = '선택된 가입자들을 삭제하겠습니까?';
+
+	$messages['summary_detail_title'] = '가입자상세정보';
+	$messages['summary_detail_mormal'] = '일반정보';
+	$messages['summary_detail_loginfo'] = '가입정보';
+	$messages['summary_detail_state'] = '가입상태 :';
+	$messages['summary_detail_id'] = '가입자ID :';
+	$messages['summary_detail_date'] = '등록날자 :';
+	$messages['summary_detail_lastdate'] = '마지막가입날자 :';
+	$messages['summary_detail_stop'] = '가입자차단 :';
+	$messages['summary_detail_group'] = '그룹 :';
+
+	$messages['summary_modal_search'] = '가입자목록검색';
+	$messages['summary_modal_phone'] = '전화번호 :';
+	$messages['summary_modal_date'] = '등록날자 :';
+	$messages['summary_modal_from'] = '부터 :';
+	$messages['summary_modal_to'] = '까지 :';
+	$messages['summary_modal_stop'] = '차단상태 :';
+	$messages['summary_modal_del'] = '가입자삭제';
+
+	//급수호출조종
+	$messages['setlevel_save'] = '보 관';
+	$messages['setlevel_level'] = '급수';
+	$messages['setlevel_modal_save'] = '급수보관';
+	$messages['setlevel_msg_save'] = '변경된 정보를 보관하겠습니까?';
+
+	//급수목록
+	$messages['levelist_title'] = '';
+
+	$messages['level_thead_levelno'] = '급수번호';
+	$messages['level_thead_levelname'] = '급수이름';
+	$messages['level_thead_intro'] = '급수설명';
+	$messages['level_thead_stop'] = '페쇄';
+
+	$messages['level_btn_add'] = '추 가';
+
+	$messages['level_msg_delete'] = '급수를 삭제하겠습니까?';
+	$messages['level_msg_seldelete'] = '삭제하려는 급수를 선택하십시오.';
+	$messages['level_msg_multisel'] = '선택된 급수들을 삭제하겠습니까?';
+	$messages['level_msg_stop'] = '급수를 페쇄하겠습니까?';
+	$messages['level_msg_check'] = '정보를 정확히 입력하십시오.';
+
+	$messages['level_modal_add'] = '급수추가';
+	$messages['level_modal_hint'] = '다음의 값들을 입력하여야 합니다.';
+	$messages['level_modal_levelno'] = '급수번호 :';
+	$messages['level_modal_levelname'] = '급수이름 :';
+	$messages['level_modal_intro'] = '급수설명 :';
+	$messages['level_modal_edit'] = '급수편집';
+	$messages['level_modal_delete'] = '급수삭제';
+
+	// Level
+	$messages['member_level_save'] = '적용';
+	$messages['member_yes'] = '예';
+	$messages['member_no'] = '아니';
+
+	$messages['access_denied'] = '조작이 실패하였습니다.';
+	$messages['input_correct_ip'] = 'IP주소를 정확히 입력하시오';
+   
+    /**
+     * Mimetype
+     */
+    $messages['menu_servermanager_mimetype'] = '화일전송매체';
+    $messages['mimetype_type'] = '매체형식';
+    $messages['mimetype_del'] = '매체형식 삭제';
+    $messages['mimetype_desc'] = '설명';
+    $messages['mimetype_size'] = '최대용량';
+    $messages['mimetype_allow'] = '허가상태';
+    $messages['mimetype_message_del'] = '선택된 매체형식들을 삭제하겠습니까?';

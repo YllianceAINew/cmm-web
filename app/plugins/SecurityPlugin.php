@@ -1,0 +1,126 @@
+<?php
+
+use Phalcon\Acl;
+use Phalcon\Acl\Role;
+use Phalcon\Acl\Resource;
+use Phalcon\Events\Event;
+use Phalcon\Mvc\User\Plugin;
+use Phalcon\Mvc\Dispatcher;
+use Phalcon\Acl\Adapter\Memory as AclList;
+
+/**
+ * SecurityPlugin
+ *
+ * This is the security plugin which controls that users only have access to the modules they're assigned to
+ */
+class SecurityPlugin extends Plugin
+{
+	/**
+	 * Returns an existing or new access control list
+	 *
+	 * @returns AclList
+	 */
+	public function getAcl()
+	{
+		if (!isset($this->persistent->acl)) {
+
+			$acl = new AclList();
+
+			$acl->setDefaultAction(Acl::DENY);
+
+			// Register roles
+			$roles = [
+				'administrator'  => new Role(
+					'Administrator',
+					'Member privileges, granted after sign in.'
+				),
+				'guests' => new Role(
+					'Guests',
+					'Anyone browsing the site who is not signed in is considered to be a "Guest".'
+				)
+			];
+
+			foreach ($roles as $role) {
+				$acl->addRole($role);
+			}
+			//Public area resources
+			$publicResources = array(
+				'index'      	=> array('index'),
+				'errors'     	=> array('show401', 'show404', 'show500'),
+				'layout'		=> array('index'),
+				'session'    	=> array('index','start','end','changepwd','savepwd','getTime'),
+				'member'		=> array('deleteUser', 'saveEdit', 'deleteMember', 'levelChanged', 'Block', 'insertLevel', 'editLevel', 'removeLevel', 'regDetail', 'detail'),
+				'server'    	=> array('delete', 'savenew', 'add', 'save')
+			);
+
+			foreach ($publicResources as $resource => $actions) {
+				$acl->addResource(new Resource($resource), $actions);
+			}
+
+			//Grant access to public areas to both users and guests
+			foreach ($roles as $role) {
+				foreach ($publicResources as $resource => $actions) {
+					foreach ($actions as $action){
+						$acl->allow($role->getName(), $resource, $action);
+					}
+				}
+			}
+			//The acl is stored in session, APC would be useful here too
+			$this->persistent->acl = $acl;
+		}
+
+		return $this->persistent->acl;
+	}
+
+	/**
+	 * This action is executed before execute any action in the application
+	 *
+	 * @param Event $event
+	 * @param Dispatcher $dispatcher
+	 * @return bool
+	 */
+	public function beforeDispatch(Event $event, Dispatcher $dispatcher)
+	{
+		$auth = $this->session->get('authAdmin');
+		$controller = $dispatcher->getControllerName();
+		$action = $dispatcher->getActionName();
+		if($auth['acl']=="ALL") return true;
+
+		if(count(json_decode($auth['acl']))>0)
+		{
+			$memAcl = json_decode($auth['acl']);
+			$acceptControllers = array();
+			$acceptActions = array();
+			foreach($memAcl as $url)
+			{
+				$splite = explode("/",$url);	
+				$acceptControllers[] = $splite[0];
+				$acceptActions[] = $splite[1];
+			}
+			if(in_array($controller,$acceptControllers) && in_array($action,$acceptActions)){
+				return true;
+			}
+		}
+
+		if (!$auth){
+			$role = 'Guests';
+		} else {
+			$role = 'Administrator';
+		}
+
+		$acl = $this->getAcl();
+		
+		if (!$acl->isResource($controller)) {
+			$this->session->destroy();
+			$this->response->redirect("");
+			return false;
+		}
+
+		$allowed = $acl->isAllowed($role, $controller, $action);
+		if ($allowed != Acl::ALLOW) {
+			$this->session->destroy();
+			$this->response->redirect("");
+			return false;
+		}
+	}
+}

@@ -1,0 +1,32 @@
+.chartbody {
+	margin-top: 100px;
+}
+h4{
+	font-family : PRK P Gothic;
+	font-weight: bold;
+}
+p{
+	font-size: 12px;
+	margin-bottom: -20px;
+}
+#chart_7{
+	font-size: 15px;
+}
+#typeSelect1,#typeSelect2,#selLogYear,#selLogMonth,#selLogYearTo,#selRegYear,#selRegMonth,#selRegYearTo{
+	padding: 3px;
+	width: 60px;
+}
+.usebody{
+	margin-top: 5px;
+}
+input{
+	width: 30%;
+}
+.div-view{
+	padding: 15px;
+	height: 350px;
+}
+
+#seeChart{
+	margin-left: 8px;
+}

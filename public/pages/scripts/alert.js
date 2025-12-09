@@ -1,0 +1,31 @@
+function alertbox(title,content,index){
+          var i = -1,
+                toastCount = 0,
+                getMessage = function () {
+
+                    return msgs[i];
+                };
+
+                var shortCutFunction = index;
+                var msg = content;
+                var title = title;
+
+                var toastIndex = toastCount++;
+
+                toastr.options = {
+              "closeButton": true,
+              "debug": false,
+              "positionClass": "toast-top-right",
+              "onclick": null,
+              "showDuration": "1000",
+              "hideDuration": "1000",
+              "timeOut": "5000",
+              "extendedTimeOut": "1000",
+              "showEasing": "swing",
+              "hideEasing": "linear",
+              "showMethod": "fadeIn",
+              "hideMethod": "fadeOut"
+            }
+            $("#toastrOptions").text("Command: toastr[" + shortCutFunction + "](\"" + msg + (title ? "\", \"" + title : '') + "\")\n\ntoastr.options = " + JSON.stringify(toastr.options, null, 2));
+            var $toast = toastr[shortCutFunction](msg, title); // Wire up an event handler to a button in the toast, if it exists
+}

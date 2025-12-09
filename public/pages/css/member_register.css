@@ -1,0 +1,23 @@
+
+button#accountAllow, button#accountCancel {
+    height: 26px;
+    width: 112px;
+    padding-left: 13px;
+    letter-spacing: 10px;
+    background: url(/adminpage/login/btn_noicon.png) no-repeat;
+    border-style: none;
+    float: left;
+    color: #6b8db1;
+    margin: 10px 30px 0px 10px;
+    margin-bottom: -32px;
+    left: 60px;
+    position: absolute;
+    top: 190px;
+    z-index: 100;
+    font-weight: bold;}
+button#accountCancel {
+    left: 200px;
+}
+#allowUser,#cancelUser{
+    margin-top: 100px;
+}

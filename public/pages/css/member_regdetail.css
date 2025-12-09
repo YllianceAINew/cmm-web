@@ -1,0 +1,60 @@
+button#return {
+    height: 26px;
+    width: 112px;
+    padding-left: 13px;
+    letter-spacing: 5px;
+    background: url(/adminpage/login/btn_noicon.png) no-repeat;
+    border-style: none;
+    float: right;
+    margin-left: 50px;
+    color: #6b8db1;
+    cursor: hand;
+    padding: 0 0 3 20;
+    font-weight: bold;
+}
+button#regCancel,
+button#regAllow {
+    height: 26px;
+    width: 112px;
+    padding-left: 13px;
+    letter-spacing: 10px;
+    background: url(/adminpage/login/btn_noicon.png) no-repeat;
+    border-style: none;
+    float: right;
+    margin-left: 50px;
+    color: #6b8db1;
+    cursor: hand;
+    padding: 0 0 3 20;
+    font-weight: bold;
+}
+.member-normal .left-pane,
+.member-normal .right-pane,
+.member-detail .left-pane,
+.member-detail .right-pane{
+    padding-left: 10px;
+    padding-right: 0px;
+}
+.regInfo label,.regInfo label{
+    width: 100%;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+.div-view .tab-content{
+    margin-top:25px;
+}
+.div-view .tab-content .row{
+    width:77%;
+    margin-bottom:10px;
+}
+#return{
+    float:right;
+}
+.regInfo{
+    width:70%;
+    margin-left:15%;
+}
+.regBtns{
+    width:77%;
+    margin-top:10px;
+}

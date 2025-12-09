@@ -1,0 +1,42 @@
+button#accountAddNew,
+button#accountDelete{
+    height: 26px;
+    width: 112px;
+    padding-left: 13px;
+    letter-spacing: 10px;
+    background: url(/adminpage/login/btn_noicon.png) no-repeat;
+    border-style: none;
+    float: left;
+    color: #6b8db1;
+    margin: 10px 30px 0px 10px;
+    left: 60px;
+    position: absolute;
+    top: 190px;
+    z-index: 100;
+    font-weight: bold;}
+button#accountDelete{
+    left: 200px;}
+table {
+    border: 1px solid #6b79a5;}
+    th {
+        background-color: #A2B4CB;
+        color: black;}
+.modal-body .scroller{
+    height:345px;}
+#responsive{
+    margin-top:60px;
+    height: 700px;}
+.modal-label{
+    width: 100%;
+    margin-top: 8px;
+    margin-bottom: 0px;
+    padding: 7px;}
+#bodyText{
+    padding-right: 0px;}
+#userID,#userName,#userOfficial,#newPassword,#confirmPassword,#branchSelect{
+    margin-top:8px;}
+#branchSelect{
+    height:90px;}
+#deleteAdmin,#delete{
+    margin-top: 100px;
+}

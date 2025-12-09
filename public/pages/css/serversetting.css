@@ -1,0 +1,80 @@
+select {
+    width: 85%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+}
+
+.settingButton, #restartButton, #stopButton{
+    background: url(/adminpage/login/dialog_btn.png) no-repeat;
+    height: 27px;
+    width: 75px;
+    border-style: none;
+    float: left;
+    margin-left: 30%;
+    color: #6b8db1;
+    margin-top: 10px;
+    margin-bottom: 10px;
+	font-weight: bold;
+}
+
+.portlet.box.blue > .portlet-title {
+	background-color: #3598dc;
+	background: #4e95d2;
+	background-image: url('/adminpage/login/title_gradient.png');
+	border: 1px solid #5c99cc;
+	height: 40px;
+}
+.portlet-notop{
+	margin-top:0;
+}
+#ip0 ,#nm0,#gw0,#setDate,#setTime,#setTimeServer{
+	margin-left:15px;
+	margin-bottom:3px;
+	width: 250px;
+}
+#selectType{
+	margin-left:18px;
+	margin-bottom:3px;
+}
+#dev0 > p{
+	margin-bottom:6px;
+	width:95px;
+	text-align: right;
+}
+#dev1 > p{
+	margin-bottom:6px;
+	width: 100px;
+}
+#setdate{
+	margin-top:10px;
+}
+#textDate,#callDate,#logDate,#alarmDate{
+	height: 34px;
+	width: 250px;
+	font-size: 14px;
+	margin-left: 10px;
+	margin-bottom: 3px;
+}
+.bootstrap-timepicker-widget{
+	position: absolute;
+	z-index: 10;
+	margin-top: 6px;
+}
+.table>thead>tr>th,.table>tbody>tr>td{
+	padding: 0px;
+}
+.table>tbody>tr>td{
+	background-color: #fff;
+}
+.table-scrollable{
+	overflow-y: auto; 
+}
+select{
+	background-color: #fff;
+}

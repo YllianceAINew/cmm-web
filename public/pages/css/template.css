@@ -1,0 +1,166 @@
+.portlet-body {
+	margin-top: 105px;
+}
+.page-content-wrapper, .page-content, .portlet-body{
+	background-color: #E0FAFF!important;
+}
+.btn-primary1:hover, .open .dropdown-toggle.btn-primary {
+    color: #fff;
+    background-image: url("/adminpage/login/hover.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    /* border-color: #285e8e; */
+}
+button.btn1 {
+    padding: 0px 0px 2px 0px;
+    font-size: 14px;
+    outline: none !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+    text-shadow: none;
+    height: 27px;
+    margin-left: 15px;
+    width: 90px;
+    background-color: transparent;
+}
+.logoutButton {
+	background-image: url('/adminpage/login/active.png');
+    height: 24px;
+    border: none;
+    position: fixed;
+    top: 62px;
+    right: 10px;
+}
+.setMember{
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    position: fixed;
+    top: 65px;
+    right: 20px;
+    cursor: pointer;
+}
+.btn-primary1:active, .btn-active {
+    background-image: url('/adminpage/login/active.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    color: #fff;
+}
+.btn-primary {
+    color: #000;
+    background-color: transparent;
+    margin-right: -5px;
+    width: 90px;
+    border: none;
+    border-style: outset;
+    border-collapse: buttonface;}
+
+h3 { width: 100%;text-align: center;}
+ul .dropdown-menu {
+    margin-left: 32px;
+    background-color: #c6e4fc;
+		margin-top: 0;
+		border: 1px solid #c9dcd8;
+}
+ul.dropdown-menu li {
+	border-bottom: 1px solid #c9dcd8;}
+ul.dropdown-menu a:hover {
+    background-color: #3aa1da;
+		margin-top: 0;
+		color: white;}
+.dropdown-menu > li > a {color: black;}
+
+select{background: transparent}
+
+#bannerDiv {
+    width:100%;position:fixed; z-index:300;
+    height: 120px;
+    padding-top: 25px;
+    padding-left: 25px;
+    background: url('/adminpage/login/banner.png');
+}
+#bannerDiv .logo-icon {
+    height: 72px;
+}
+#bannerDiv .logo-title {
+    margin-left: 20px;
+    height: 42px;
+}
+#topDiv{
+    position: fixed;
+    top: 94px;
+    width: 100%;
+    z-index: 300;
+    left:190px;
+}
+#topDiv > ul > li > button {
+    font-size: 13.5px;
+    font-weight: bold;
+}
+.pagination, .dataTables_paginate{margin: 0px;padding-top: 0px!important}
+.div-view{margin:0px;}
+
+#accordiandiv{
+	float: left;
+	text-align: left;
+	background-color: #1661A2;
+	width: 190px;
+	height: 100%;
+	display: block;
+	margin-top: 120px;
+	position: fixed;
+}
+.page-sidebar{
+	width: 200px;
+}
+.page-container{
+	margin-left: 160px;
+}
+.page-footer{
+	position: fixed;
+    bottom: 0px;
+    width: 100%;
+	background-color: #34495e;
+	z-index:100;
+}
+#accordiandiv > ul{
+	list-style-type: none;
+    margin: 1px;
+}
+#accordiandiv  > ul > li {
+	text-decoration: none;
+	font-size: 13.5px;
+	border-bottom: 1px solid #004F8A;
+	border-top: 1px solid #3D80B5;
+	height: 40px;
+	cursor: pointer;
+	cursor: hand;
+	background-color: #1661A2;
+	color:rgb(198, 224, 235);
+	font-weight: bold;
+	margin-left: -40px;
+}
+.page-leftbar-tag{
+	padding: 10px 0px 0px 30px;
+}
+#accordiandiv > ul > li > a{
+    text-decoration: none;
+	color:rgb(194, 230, 255);
+}
+#accordiandiv > ul > li.active {
+    background-image: -webkit-linear-gradient(top, #f2f6f9 0%, #bfd5e7 100%);
+}
+#accordiandiv > ul > li.active > a{
+	color :rgb(64, 64, 64);
+	text-decoration: none;
+}
+.nav-tabs {
+border-bottom: none;
+position: fixed;
+top: 95px;
+left: 230px;
+}

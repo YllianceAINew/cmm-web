@@ -1,0 +1,77 @@
+body{
+	font-family: "PRK P Gothic"!important;}
+.div-view{
+	border: 1px solid #539ad7;
+	padding: 30px;
+	background-color: #fff;}
+	.table-head{
+		background-color:#337AB7;
+		color:white;}
+table > thead > tr > th{
+    text-align: center;
+	vertical-align: inherit!important;
+    background-color:#A2B4CB; 
+    color:black;}
+td{
+	text-align: center;
+	vertical-align: inherit!important;}
+h3{
+	font-family: "PRK P Gothic";
+    font-weight:bold;
+	letter-spacing: 15px;}
+h4{
+	font-family: "PRK P Gothic";
+    font-weight:bold;
+	letter-spacing: 5px;}
+h5{
+	font-family: "PRK P Gothic";
+	margin-left:20px;}
+.modal-header{
+	background: #4e95d2; 
+	background-image: url('/adminpage/login/title_gradient.png'); 
+	border: 1px solid #5c99cc;
+	height: 35px;}
+.modal-title{
+	font-family: "PRK P Gothic";
+	font-size: 17px;
+	font-weight: bold;
+	margin-top:-10px;
+	color:white;}
+#cancelBtn,
+#okBtn{
+	background-image: url('/adminpage/login/active.png');
+	border: none;
+	width: 87px;
+	height: 24px; 
+	color: white;
+	font-weight: bold;}
+#delBody{
+	height:50px;}
+.page-content-wrapper .page-content {
+	margin-top: 0px;}
+.clockLB{
+	position: fixed; 
+	top: 97px; 
+	z-index: 1000; 
+	right: 20px; 
+	color: #004e89; 
+	font-weight: bold;
+    font-size: 14px;}
+.dropdown-menu{
+    position: absolute;
+    margin-top: 6px;}
+.simple_btn_style{
+    height: 26px;
+    width: 112px;
+    background: url(/adminpage/login/btn_noicon.png) no-repeat;
+    border-style: none;
+    float: left;
+    color: #6b8db1;
+    margin: 10px 30px 0px 10px;
+    left: 60px;
+    position: absolute;
+    top: 190px;
+    z-index: 100;}
+.portlet > .portlet-title > .caption {
+	font-size: 16px;
+	font-weight: bold;}
