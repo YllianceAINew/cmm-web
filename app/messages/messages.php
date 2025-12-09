@@ -37,6 +37,13 @@
 	//header
 	$messages['header_logged'] = 'Logged in: ';
 	$messages['header_logout'] = 'Logged out';
+	
+	//login page
+	$messages['session_login_message'] = 'Sign in to start your session';
+	$messages['login_id_placeholder'] = 'User ID';
+	$messages['login_password_placeholder'] = 'Password';
+	$messages['login_remember_me'] = 'Remember Me';
+	$messages['login_signin'] = 'Sign In';
 
 	//menu
 	$messages['menu_features'] = 'Feature';
@@ -434,3 +441,7 @@
     $messages['mimetype_size'] = 'max size';
     $messages['mimetype_allow'] = 'allow';
     $messages['mimetype_message_del'] = 'want to delete selected mimetype?';
+
+	$messages['content_messages_password'] = 'Wrong password';
+	$messages['content_messages_ip'] = 'Not Allowed IP';
+	$messages['content_messages_username'] = 'Username not exists';

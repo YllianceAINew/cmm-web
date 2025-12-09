@@ -15,6 +15,8 @@ class SessionController extends ControllerUIBase
 
     public function indexAction()
     {
+		$this->view->setLayout('login-adminlte');
+		$this->view->pick('session/index-adminlte');
 		$this->assets->addJs("global/plugins/jquery-validation/js/jquery.validate.min.js");
 		$this->assets->addJs("global/plugins/jquery-validation/js/additional-methods.min.js");
 		$this->assets->addJs("global/plugins/backstretch/jquery.backstretch.min.js");
@@ -72,12 +74,10 @@ class SessionController extends ControllerUIBase
 						$admin->save();
 						if($admin->memberAcl=="ALL")
 						{
-							echo "member/summary";
-							exit;
+							return $this->response->redirect('member/summary');
 						}else{
 							$memberAcl = json_decode($admin->memberAcl);
-							echo $memberAcl[0];
-							exit;
+							return $this->response->redirect($memberAcl[0]);
 						}
 					} else
 						$this->flash->error($this->lang['content_messages_password']);
@@ -120,7 +120,7 @@ class SessionController extends ControllerUIBase
 
 	echo $year.".".$isMonth.".".$month." ".$time;
 	exit;*/
-	date_default_timezone_set('Asia/Pyongyang');
+	// date_default_timezone_set('');
 
 	$date = date("Y.m.d h:i:s");
 	echo json_encode ("봉사기시간: " . $date);
