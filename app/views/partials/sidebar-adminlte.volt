@@ -1,6 +1,6 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{ url('dashboard/index') }}" class="brand-link">
+    <a href="{{ url('server/index') }}" class="brand-link">
       <img src="{{ url('login/logo.svg') }}" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">CMM Admin</span>
     </a>
@@ -32,16 +32,6 @@
       <nav class="mt-2 flex-grow-1">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           
-          <!-- Dashboard -->
-          <?php if (in_array("dashboard/index", $acceptAcl)){ ?>
-          <li class="nav-item">
-            <a href="{{ url('dashboard/index') }}" class="nav-link" id="menu-dashboard">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>{{ lang._('menu_dashboard') }}</p>
-            </a>
-          </li>
-          <?php } ?>
-
           <!-- Server Manager -->
           <?php if (in_array("server/index", $acceptAcl) || in_array("server/serversetting", $acceptAcl) || in_array("server/xmppserver", $acceptAcl) || in_array("server/sipserver", $acceptAcl) || in_array("server/proxyserver", $acceptAcl)){ ?>
           <li class="nav-item">

@@ -89,7 +89,8 @@ class DashboardController extends ControllerUIBase
 
     public function indexAction()
     {
-        $this->assets->addJs("global/plugins/datatables/datatables.js");
+        // Dashboard removed - redirect to server index
+        return $this->response->redirect('server/index');
         $this->assets->addJs("global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js");
         $this->assets->addJs("global/plugins/amcharts/amcharts/amcharts.js");
         $this->assets->addJs("global/plugins/amcharts/amcharts/serial.js");

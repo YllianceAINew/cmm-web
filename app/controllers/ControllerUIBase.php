@@ -15,7 +15,7 @@ class ControllerUIBase extends Controller
 		if ($auth) {
             $this->view->authAdmin = $auth;
             if ($auth['acl'] == 'ALL')
-                $this->view->acceptAcl = array("dashboard/index", 
+                $this->view->acceptAcl = array(
                                 "server/index", "server/serversetting", "server/xmppserver", "server/sipserver", "server/proxyserver", "server/irregular", "server/mimetype",
                                 "log/calllog", "log/textlog", "log/signlog", "log/xmppHistory","log/sipHistory", 
                                 "member/register", "member/summary", "member/setlevel", "member/levelList");

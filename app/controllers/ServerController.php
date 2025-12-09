@@ -12,7 +12,7 @@ class ServerController extends ControllerUIBase
         $this->view->setLayout('adminlte');
         parent::initialize();
 
-        $this->aclList = array("0" => array("dashboard/index"),
+        $this->aclList = array("0" => array(),
                                "1" => array("server/index", "server/serversetting", "server/xmppserver", "server/sipserver", "server/proxyserver", "server/irregular", "server/mimetype"),
                                "2" => array("member/register", "member/summary", "member/setlevel", "member/levelList"),
                                "3" => array("log/calllog", "log/textlog", "log/signlog", "log/xmppHistory","log/sipHistory"));
@@ -168,7 +168,7 @@ class ServerController extends ControllerUIBase
                 "1" =>"봉사기관리", 
                 "2" => "가입자관리", 
                 "3" => "리력관리");
-        $list = array("dashboard/index","server/index","member/register","log/calllog");
+        $list = array("server/index","member/register","log/calllog");
         $this->view->form = $registerForm;
         $this->view->id = $id;
 

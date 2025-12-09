@@ -29,11 +29,6 @@ $(function () {
     }
   });
   
-  // Dashboard special handling
-  if (url.indexOf('dashboard/index') !== -1 || url.indexOf('dashboard') !== -1) {
-    $('#menu-dashboard').addClass('active');
-  }
-  
   // Server menu handling
   if (url.indexOf('server/') !== -1) {
     $('#menu-server').addClass('active');
