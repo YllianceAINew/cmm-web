@@ -7,6 +7,7 @@ class MemberController extends ControllerUIBase
     public function initialize()
     {
         $this->tag->setTitle($this->lang['menu_registration']);
+        $this->view->setLayout('adminlte');
         parent::initialize();
     	$this->prefix = "ub000000000";
     	$this->kamPrefix= "000000000";
@@ -28,7 +29,6 @@ class MemberController extends ControllerUIBase
 
     public function summaryAction($sentFrom = "",$sentTo = "",$id = "",$name = "",$phone = "",$select = "all")
     {
-        $this->view->setTemplateAfter("userManager");
         $this->assets->addJs("global/plugins/datatables/datatables.js");
         $this->assets->addJs("global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js");
         $this->assets->addJs("global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js");
@@ -79,7 +79,6 @@ class MemberController extends ControllerUIBase
     }
     
     public function detailAction($username = "") {
-        $this->view->setTemplateAfter("userManager");
         $this->assets->addCss("global/plugins/bootstrap-select/css/bootstrap-select.min.css");
         $this->assets->addCss("pages/css/member_detail.css");
         $this->assets->addJs("global/plugins/bootstrap-select/js/bootstrap-select.min.js");
@@ -218,7 +217,6 @@ class MemberController extends ControllerUIBase
 
     public function setlevelAction()
     {   
-        $this->view->setTemplateAfter("userManager");
         $this->assets->addCss("pages/css/member_setlevel.css");
 
         $levels = LevelDetailModel::find(["order" => "level"]);
@@ -274,7 +272,6 @@ class MemberController extends ControllerUIBase
     //          ici 2018.6.19          //
     //          급수목록                //
     public function levelListAction() {
-        $this->view->setTemplateAfter("userManager");
         $this->assets->addCss("pages/css/member_levelist.css");
 
         $this->assets->addJs("pages/scripts/member_levelList.js");
@@ -413,7 +410,6 @@ class MemberController extends ControllerUIBase
     //          ici 2018.6.19          //
     //          가입자등록신청접수        //
     public function registerAction() {
-        $this->view->setTemplateAfter("userManager");
         $this->assets->addCss("pages/css/member_register.css");
         $this->assets->addCss("global/plugins/datatables/datatables.css");
 
@@ -427,7 +423,6 @@ class MemberController extends ControllerUIBase
     //          ici 2018.6.19          //
     //          가입자등록상세정보        //
     public function regDetailAction($id = -1) {
-        $this->view->setTemplateAfter("userManager");
         $this->assets->addCss("pages/css/member_regdetail.css");
         $this->assets->addJs("pages/scripts/member_regdetail.js");
         if ($id == -1)

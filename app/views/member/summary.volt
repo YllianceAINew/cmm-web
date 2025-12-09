@@ -1,17 +1,35 @@
 {{ content() }}
-<!-- BEGIN CONTENT -->
 <script type="text/javascript">
     var baseUrl = "{{ url() }}";
 </script>
-<div class="page-content-wrapper">
-    <!-- BEGIN CONTENT BODY -->
-    <div class="page-content" >
-        <div>                            <!-- class="portlet light bordered" -->
-            <div class="portlet-body">
-                <div class="tab-content">
-                    <h3>{{ lang._('userlist') }}</h3>
-                    <div class="div-view row">
-                        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
+
+<!-- Member Summary Card -->
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">
+            <i class="fas fa-users mr-1"></i>
+            {{ lang._('userlist') }}
+        </h3>
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+            </button>
+        </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-md-12 text-right">
+                <button id="searchAccount" class="btn btn-primary btn-sm" data-toggle="modal" href="#searchModal">
+                    <i class="fas fa-search mr-1"></i>{{ lang._('btn_search') }}
+                </button>
+                <button id="removeAccount" class="btn btn-danger btn-sm" data-toggle="modal" href="#deleteSelected">
+                    <i class="fas fa-trash mr-1"></i>{{ lang._('btn_delete') }}
+                </button>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover" id="sample_1">
                             <thead>
                                 <tr class="table-head">
                                     <th> <input type="checkbox" class="checkAll"> </th>
@@ -98,88 +116,112 @@
                                 ?>
                             </tbody>
                         </table>
+        </div>
+    </div>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->
 
-                        <button id="removeAccount" align="right" data-toggle="modal" href="#deleteSelected">{{ lang._('btn_delete') }} </button>
-                        <button id="searchAccount" align="right" data-toggle="modal" href = "#searchModal">{{ lang._('btn_search') }} </button>
-                    </div>
+<!-- Delete Member Modal -->
+<div id="delete" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">{{ lang._('summary_modal_del') }}</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="delBody">
+                    <div class="row">
+                        <label id="deleteMemberId" hidden></label>
+                        <p>{{ lang._('logUser') }}(<label id="deleteMemberName"></label>){{ lang._('str_cancel') }}</p>
+                    </div>  
                 </div>
             </div>
-        </div>
-    </div>  <!-- page-content -->
-
-    <div id="delete" class="modal fade" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title">{{ lang._('summary_modal_del') }}</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="scroller" id="delBody"  data-always-visible="1" data-rail-visible="1">
-                        <div class="row">
-                            <label id="deleteMemberId" hidden></label>
-                            <h5>{{ lang._('logUser') }}(<label id="deleteMemberName"></label>){{ lang._('str_cancel') }}</h5>
-                        </div>  
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" id="okBtn" onClick="onDeleteMember()">{{ lang._('btn_ok') }}</button>
-                    <button type="button" id="cancelBtn" data-dismiss="modal">{{ lang._('btn_cancel') }}</button>                    
-                </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{ lang._('btn_cancel') }}</button>
+                <button type="submit" id="okBtn" class="btn btn-danger" onClick="onDeleteMember()">{{ lang._('btn_ok') }}</button>
             </div>
         </div>
     </div>
+</div>
 
-    <div id="deleteSelected" class="modal fade" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title">{{ lang._('summary_modal_del') }}</h4>
+<!-- Delete Selected Members Modal -->
+<div id="deleteSelected" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">{{ lang._('summary_modal_del') }}</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="delBody">
+                    <div class="row">
+                        <p>{{ lang._('summary_msg_multisel') }}</p>
+                    </div>  
                 </div>
-                <div class="modal-body">
-                    <div class="scroller" id="delBody"  data-always-visible="1" data-rail-visible="1">
-                        <div class="row">
-                            <h5>{{ lang._('summary_msg_multisel') }}</h5>
-                        </div>  
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" id="okBtn" onclick="onSelDelete()">{{ lang._('btn_ok') }}</button>
-                    <button type="button" id="cancelBtn" data-dismiss="modal">{{ lang._('btn_cancel') }}</button>                    
-                </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{ lang._('btn_cancel') }}</button>
+                <button type="submit" id="okBtn" class="btn btn-danger" onclick="onSelDelete()">{{ lang._('btn_ok') }}</button>
             </div>
         </div>
     </div>
+</div>
 
-    <div id="searchModal" class="modal fade" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title" >{{ lang._('summary_modal_search') }}</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="scroller" id="searchBody" data-always-visible="1" data-rail-visible1="1">
-                        <div class="row">
-                            <div class="col-md-3" id = "bodyText" align="right">
-                                <label class="modal-label">{{ lang._('summary_modal_date') }}</label>
-                                <label class="modal-label">{{ lang._('userid') }} :</label>
-                                <label class="modal-label">{{ lang._('name') }} :</label>
-                                <label class="modal-label">{{ lang._('summary_modal_phone') }}</label>
-                                <label class="modal-label">{{ lang._('summary_modal_stop') }}</label>
+<!-- Search Modal -->
+<div id="searchModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">{{ lang._('summary_modal_search') }}</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="searchBody">
+                    <div class="row">
+                        <div class="col-md-3 text-right">
+                            <div class="form-group">
+                                <label class="form-label">{{ lang._('summary_modal_date') }}</label>
                             </div>
-                            <div class="col-md-7">
-                                <div id="sent" class="input-group date-picker input-daterange" data-date="10/11/2012" data-date-format = "yyyy-mm-dd">
+                            <div class="form-group">
+                                <label class="form-label">{{ lang._('userid') }} :</label>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">{{ lang._('name') }} :</label>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">{{ lang._('summary_modal_phone') }}</label>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">{{ lang._('summary_modal_stop') }}</label>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <div id="sent" class="input-group date-picker input-daterange" data-date="10/11/2012" data-date-format="yyyy-mm-dd">
                                     <input type="text" class="form-control" id="sentFrom" name="from">
-                                    <span class="input-group-addon"> {{ lang._('from') }} </span>
+                                    <span class="input-group-addon">{{ lang._('from') }}</span>
                                     <input type="text" class="form-control" id="sentTo" name="to">
                                 </div>
-
-                                <input id="id" type="text"  class="col-md-12 form-control">
-                                <input id="name" type="text"  class="col-md-12 form-control " >
-                                <input id="phone" type="text"  class="col-md-12 form-control " >
-                                <select id="typeSelect" class="col-md-12 form-control ">
+                            </div>
+                            <div class="form-group">
+                                <input id="id" type="text" class="form-control" placeholder="{{ lang._('userid') }}">
+                            </div>
+                            <div class="form-group">
+                                <input id="name" type="text" class="form-control" placeholder="{{ lang._('name') }}">
+                            </div>
+                            <div class="form-group">
+                                <input id="phone" type="text" class="form-control" placeholder="{{ lang._('summary_modal_phone') }}">
+                            </div>
+                            <div class="form-group">
+                                <select id="typeSelect" class="form-control">
                                     <option value="all">전체</option>
                                     <option value="1">차단</option>
                                 </select>
@@ -187,11 +229,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="submit" id="okBtn" onclick="onSearchAccount()">{{ lang._('btn_search') }}</button>
-                    <button type="button" id="cancelBtn" data-dismiss="modal">{{ lang._('btn_cancel') }}</button>
-                    
-                </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">{{ lang._('btn_cancel') }}</button>
+                <button type="submit" id="okBtn" class="btn btn-primary" onclick="onSearchAccount()">
+                    <i class="fas fa-search mr-1"></i>{{ lang._('btn_search') }}
+                </button>
             </div>
         </div>
     </div>

@@ -6,19 +6,30 @@
     </a>
 
     <!-- Sidebar -->
-    <div class="sidebar">
+    <div class="sidebar d-flex flex-column">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           <img src="{{ url('adminlte/dist/img/avatar.png') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{ authAdmin['name'] }}</a>
+          <a href="#" class="d-block" data-toggle="dropdown" aria-expanded="false" role="button" aria-haspopup="true" aria-label="User menu">{{ authAdmin['name'] }}</a>
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left">
+            <span class="dropdown-item dropdown-header">{{ authAdmin['name'] }}</span>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-user mr-2"></i> {{ lang._('menu_profile') }}
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="{{ url('session/end') }}" class="dropdown-item">
+              <i class="fas fa-sign-out-alt mr-2"></i> {{ lang._('menu_logout') }}
+            </a>
+          </div>
         </div>
       </div>
 
       <!-- Sidebar Menu -->
-      <nav class="mt-2">
+      <nav class="mt-2 flex-grow-1">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           
           <!-- Dashboard -->
@@ -202,6 +213,15 @@
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
+      
+      <!-- Sidebar Footer -->
+      <div class="sidebar-footer mt-auto pb-3">
+        <div class="d-flex justify-content-center">
+          <a class="btn btn-sm btn-link text-white" href="#" data-widget="fullscreen" role="button" title="Toggle Fullscreen" aria-label="Toggle Fullscreen">
+            <i class="fas fa-expand-arrows-alt"></i>
+          </a>
+        </div>
+      </div>
     </div>
     <!-- /.sidebar -->
   </aside>
