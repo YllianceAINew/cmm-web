@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ get_title() }}</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="{{ url('adminlte/plugins/fontawesome-free/css/all.min.css') }}">
+  <!-- AdminLTE Theme style -->
+  <link rel="stylesheet" href="{{ url('adminlte/dist/css/adminlte.min.css') }}">
+  
+  <!-- Dynamic CSS Assets -->
+  {{ assets.outputCss() }}
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<script type="text/javascript">
+	var baseUrl = "{{ url() }}";
+	var acls = {{ acceptAcl | json_encode }};
+</script>
+
+<div class="wrapper">
+
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="{{ url('dashboard/index') }}" class="nav-link">{{ lang._('menu_first') }}</a>
+      </li>
+    </ul>
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <!-- User Account -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="far fa-user"></i>
+          <span class="d-none d-md-inline ml-1">{{ authAdmin['name'] }}</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-item dropdown-header">{{ authAdmin['name'] }}</span>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-user mr-2"></i> {{ lang._('menu_profile') }}
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="{{ url('session/end') }}" class="dropdown-item">
+            <i class="fas fa-sign-out-alt mr-2"></i> {{ lang._('menu_logout') }}
+          </a>
+        </div>
+      </li>
+      
+      <!-- Fullscreen -->
+      <li class="nav-item">
+        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+          <i class="fas fa-expand-arrows-alt"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  {{ partial("partials/sidebar-adminlte") }}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">{{ get_title() }}</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="{{ url('dashboard/index') }}">Home</a></li>
+              <li class="breadcrumb-item active">{{ get_title() }}</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <div class="content">
+      <div class="container-fluid">
+        {{ flash.output() }}
+        {{ content() }}
+      </div>
+    </div>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Main Footer -->
+  <footer class="main-footer">
+    {{ partial("partials/footer") }}
+  </footer>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+
+<!-- jQuery -->
+<script src="{{ url('adminlte/plugins/jquery/jquery.min.js') }}"></script>
+<!-- Bootstrap 4 -->
+<script src="{{ url('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- AdminLTE App -->
+<script src="{{ url('adminlte/dist/js/adminlte.min.js') }}"></script>
+
+<!-- Custom Scripts -->
+<script src="{{ url('adminlte/custom/sidebar-active.js') }}"></script>
+
+<!-- Dynamic JS Assets -->
+{{ assets.outputJs() }}
+
+</body>
+</html>
+

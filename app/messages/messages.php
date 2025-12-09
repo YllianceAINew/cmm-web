@@ -77,6 +77,21 @@
 
 	$messages['menu_logout'] = 'Log out';
 	$messages['menu_servertime'] = 'Server time';
+	$messages['menu_profile'] = 'Profile';
+	$messages['menu_server_list'] = 'Server List';
+	$messages['menu_server_setting'] = 'Server Setting';
+	$messages['menu_xmpp_server'] = 'XMPP Server';
+	$messages['menu_sip_server'] = 'SIP Server';
+	$messages['menu_proxy_server'] = 'Proxy Server';
+	$messages['menu_member_summary'] = 'Member Summary';
+	$messages['menu_member_register'] = 'Member Register';
+	$messages['menu_member_level'] = 'Set Level';
+	$messages['menu_level_list'] = 'Level List';
+	$messages['menu_call_log'] = 'Call Log';
+	$messages['menu_text_log'] = 'Text Log';
+	$messages['menu_sign_log'] = 'Sign Log';
+	$messages['menu_xmpp_history'] = 'XMPP History';
+	$messages['menu_sip_history'] = 'SIP History';
 	$messages['content_search_placeholder'] = 'Search···';
 	//log in
 	$messages['session_page_title'] = 'Sign in';
