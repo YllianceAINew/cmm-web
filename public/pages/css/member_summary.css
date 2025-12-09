@@ -1,21 +1,12 @@
- button#searchAccount,
- button#removeAccount {
-    height: 26px;
-    width: 112px;
-    padding-left: 13px;
-    letter-spacing: 10px;
-    background: url(/adminpage/login/btn_noicon.png) no-repeat;
-    border-style: none;
-    float: left;
-    color: #6b8db1;
-    margin: 10px 30px 0px 10px;
-    left: 60px;
-    position: absolute;
-    top: 190px;
-    z-index: 100;
-    font-weight: bold;}
-button#removeAccount{
-    left: 200px;}
+/* AdminLTE3 DataTables button styling */
+#sample_1_wrapper .dt-buttons {
+    margin-bottom: 1rem;
+}
+
+#sample_1_wrapper .dt-buttons .btn {
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
 #searchModal, #deleteModal,#deleteUser,#delete{
     margin-top:100px;}
 #searchBody{

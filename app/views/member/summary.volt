@@ -18,18 +18,8 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-        <div class="row mb-3">
-            <div class="col-md-12 text-right">
-                <button id="searchAccount" class="btn btn-primary btn-sm" data-toggle="modal" href="#searchModal">
-                    <i class="fas fa-search mr-1"></i>{{ lang._('btn_search') }}
-                </button>
-                <button id="removeAccount" class="btn btn-danger btn-sm" data-toggle="modal" href="#deleteSelected">
-                    <i class="fas fa-trash mr-1"></i>{{ lang._('btn_delete') }}
-                </button>
-            </div>
-        </div>
         <div class="table-responsive">
-            <table class="table table-striped table-bordered table-hover" id="sample_1">
+            <table id="sample_1" class="table table-bordered table-striped">
                             <thead>
                                 <tr class="table-head">
                                     <th> <input type="checkbox" class="checkAll"> </th>
