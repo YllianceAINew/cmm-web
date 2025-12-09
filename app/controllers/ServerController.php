@@ -146,10 +146,10 @@ class ServerController extends ControllerUIBase
         $this->assets->addJs("pages/scripts/localization.js");
         $this->assets->addJs("pages/scripts/server_index.js");
 
-        $this->assets->addCss("pages/css/server_index.css");
-        $this->assets->addCss("global/plugins/datatables/datatables.css");
-        $this->assets->addCss("global/plugins/bootstrap-toastr/toastr.min.css");
-        $this->assets->addCss("global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css");
+        // $this->assets->addCss("pages/css/server_index.css");
+        // $this->assets->addCss("global/plugins/datatables/datatables.css");
+        // $this->assets->addCss("global/plugins/bootstrap-toastr/toastr.min.css");
+        // $this->assets->addCss("global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css");
 
         $adminMembers = AdminMemberModel::find();
         $this->view->members = $adminMembers;
