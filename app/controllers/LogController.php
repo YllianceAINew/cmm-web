@@ -6,6 +6,7 @@ class LogController extends ControllerUIBase
     public function initialize()
     {
         $this->tag->setTitle($this->lang['menu_account']);
+        $this->view->setLayout('adminlte');
         parent::initialize();
         
         $config = new ConfigIni(APP_PATH . 'app/config/config.ini');

@@ -9,6 +9,7 @@ class ServerController extends ControllerUIBase
     public function initialize()
     {
         $this->tag->setTitle($this->lang['menu_account']);
+        $this->view->setLayout('adminlte');
         parent::initialize();
 
         $this->aclList = array("0" => array("dashboard/index"),
