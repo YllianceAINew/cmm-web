@@ -242,11 +242,12 @@ $(document).ready(function () {
             location.href = location.href;
         }
         else
-            $("#alertDel h5").text("선택된 경보리력들을 삭제하겠습니까?");
+            $("#deleteLogMessage").text("선택된 경보리력들을 삭제하겠습니까?");
     });
 
     $(".deleteHistBtn").click(function(){
-        $("#deleteHistId").text($(this).parent().parent().find("[class='childChecks']").text());
+        var id = $(this).attr("data-id");
+        $("#deleteHistId").text(id);
     });
 
     $("li#xmppHistory").addClass("active");
