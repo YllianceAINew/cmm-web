@@ -22,7 +22,7 @@ function onEditHaproxy() {
         dataType: 'html',
         success: function(res){
             if (res == "error"){
-                showNotification("조작이 실패하였습니다", "danger");
+                showNotification("Operation failed", "danger");
             } else {
                 showNotification("HAProxy server updated successfully", "success");
                 setTimeout(function() {
@@ -55,7 +55,7 @@ function onEditFileserver() {
         dataType: 'html',
         success: function(res){
             if (res == "error"){
-                showNotification("조작이 실패하였습니다", "danger");
+                showNotification("Operation failed", "danger");
             } else {
                 showNotification("File server updated successfully", "success");
                 setTimeout(function() {
@@ -93,7 +93,7 @@ function onAddServer() {
         dataType: 'html',
         success: function(res){
             if (res == "error"){
-                showNotification("조작이 실패하였습니다", "danger");
+                showNotification("Operation failed", "danger");
             } else {
                 showNotification("XMPP server added successfully", "success");
                 setTimeout(function() {
@@ -212,7 +212,7 @@ $(document).ready(function () {
         var serverip = $(this).attr("serverIp");
         var $row = $(this).closest('tr');
         
-        if (confirm("부분봉사기(" + serverip + ")를 삭제하겠습니까?")) {
+        if (confirm("Do you want to delete the sub-server (" + serverip + ")?")) {
             $.ajax({
                 type: 'POST',
                 url: baseUrl + 'server/deleteXmpp',
@@ -227,7 +227,7 @@ $(document).ready(function () {
                             location.href = xmppUrl;
                         }, 1000);
                     } else {
-                        showNotification("조작이 실패하였습니다", "danger");
+                        showNotification("Operation failed", "danger");
                     }
                 },
                 error: function() {

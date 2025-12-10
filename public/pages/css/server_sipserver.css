@@ -1,37 +1,67 @@
-#sipservers{    
-	padding: 0 100px 0 100px;
+/* AdminLTE 3 SIP Server Page Styles */
+
+/* Card spacing */
+.card {
+    margin-bottom: 1.5rem;
 }
-#server_state{
-	padding: 50px;
-	border: 1px solid #539AD7;
+
+/* Table responsive wrapper */
+.table-responsive {
+    overflow-x: auto;
 }
-.controlBtn{
-    width: 50%;
-    color: #34495e;
+
+/* Server status badges */
+.badge {
+    font-size: 0.875rem;
+    padding: 0.35em 0.65em;
 }
-.slimScrollDiv {
-    height: 70px!important;
+
+/* Button spacing in tables */
+.table td .btn {
+    margin: 0;
 }
-.scroller{
-    height: 70px!important;
+
+/* Delete button hover effect */
+.deleteSip:hover {
+    opacity: 0.8;
 }
-tr.bg_selected{
-	background-color: #739DD4!important;
-	color: black;
+
+/* Modal form styling */
+.modal-body .form-group {
+    margin-bottom: 1rem;
 }
-button#addServerBtn {
-    height: 26px;
-    width: 112px;
-    padding-left: 13px;
-    letter-spacing: 10px;
-    background: url(/adminpage/login/btn_noicon.png) no-repeat;
-    border-style: none;
-    float: left;
-    color: #6b8db1;
-    margin: 10px 30px 0px 10px;
-    margin-bottom: -32px;
-    left: 100px;
-    position: absolute;
-    top: 310px;
-    z-index: 100;
-    font-weight: bold;}
+
+.modal-body .form-group label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .card-header .card-tools {
+        float: none;
+        margin-top: 0.5rem;
+    }
+    
+    .card-header .card-tools .btn {
+        margin-bottom: 0.25rem;
+    }
+    
+    .table-responsive {
+        font-size: 0.875rem;
+    }
+    
+    .table td .btn {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.75rem;
+    }
+}
+
+/* Ensure proper spacing for empty states */
+#sipservers tbody:empty::before {
+    content: "No SIP servers configured";
+    display: block;
+    padding: 1rem;
+    text-align: center;
+    color: #6c757d;
+}
