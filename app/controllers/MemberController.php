@@ -120,7 +120,7 @@ class MemberController extends ControllerUIBase
         $level = $this->request->getPost("level");
         $isblock = $this->request->getPost("isBlock");
 
-        if (!$level || !$isblock)
+        if (!$level || $isblock === null || $isblock === '')
             exit;
 
         /////////////////////    UserDetail     ////////////

@@ -151,7 +151,11 @@
                     else
                         $img_name = "online.gif";
                     
-                    $splits = explode(":", $member->UserListModel->email);
+                    // Initialize $splits safely
+                    $splits = array();
+                    if($member->UserListModel && isset($member->UserListModel->email)) {
+                        $splits = explode(":", $member->UserListModel->email);
+                    }
                 ?>
                 <div class="row">
                     <div class="col-md-12">
@@ -202,11 +206,14 @@
                             <label>{{ lang._('summary_detail_stop') }}</label>
                             <div class="form-check">
                                 <?php
-                                if ($member->UserListModel->username != 'admin'){
-                                    if ($splits[0] == '0')
+                                if ($member->UserListModel && $member->UserListModel->username != 'admin'){
+                                    if (isset($splits[0]) && $splits[0] == '0')
                                         echo '<input type="checkbox" class="form-check-input" id="isBlock">';
                                     else
                                         echo '<input type="checkbox" class="form-check-input" id="isBlock" checked>';
+                                } else {
+                                    // Default to unchecked if UserListModel doesn't exist
+                                    echo '<input type="checkbox" class="form-check-input" id="isBlock">';
                                 }
                                 ?>
                                 <label class="form-check-label" for="isBlock">
@@ -223,7 +230,7 @@
                             <select class="form-control" id="levelSelect">
                                 {% for level in lvSet %}
                                 <?php
-                                if (count($splits) > 1) {
+                                if (isset($splits) && count($splits) > 1) {
                                     if ($splits[1] == $level)
                                         echo '<option value="'.$level.'" selected>'.$level.'</option>';
                                     else
