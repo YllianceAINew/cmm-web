@@ -225,14 +225,14 @@ class LogController extends ControllerUIBase
 
     //        호출리력          //
     public function calllogAction($sentFrom = "",$sentTo = "",$sender = "",$receiver = "") {
-        $this->assets->addCss("global/plugins/datatables/datatables.css");
-        $this->assets->addCss("global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css"); 
-        $this->assets->addCss("pages/css/log_calllog.css");
+        // $this->assets->addCss("global/plugins/datatables/datatables.css");
+        // $this->assets->addCss("global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css"); 
+        // $this->assets->addCss("pages/css/log_calllog.css");
 
-        $this->assets->addJs("global/plugins/datatables/datatables.js");
-        $this->assets->addJs("global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js");
-        $this->assets->addJs("pages/scripts/components-date-time-pickers.min.js");
-        $this->assets->addJs("global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js");
+        // $this->assets->addJs("global/plugins/datatables/datatables.js");
+        // $this->assets->addJs("global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js");
+        // $this->assets->addJs("pages/scripts/components-date-time-pickers.min.js");
+        // $this->assets->addJs("global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js");
         $this->assets->addJs("pages/scripts/log_callog.js");
         $reason = [$this->lang['ok'],$this->lang['notexist'],$this->lang['nothave'],$this->lang['sendstop'],$this->lang['rcvdstop'],$this->lang['sndlevel'],$this->lang['rcvdlevel']];
  
