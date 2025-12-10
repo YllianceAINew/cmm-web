@@ -1,4 +1,9 @@
 $(function () {
+    // Check if DataTable is already initialized and destroy it first
+    if ($.fn.dataTable.isDataTable('#sample_1')) {
+        $('#sample_1').DataTable().destroy();
+    }
+    
     // Initialize DataTable with AdminLTE3 style
     var table = $("#sample_1").DataTable({
         "responsive": true,
