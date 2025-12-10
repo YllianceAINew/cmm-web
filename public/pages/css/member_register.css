@@ -1,23 +1,44 @@
+/* Member Register Page - AdminLTE 3 Styling */
 
-button#accountAllow, button#accountCancel {
-    height: 26px;
-    width: 112px;
-    padding-left: 13px;
-    letter-spacing: 10px;
-    background: url(/adminpage/login/btn_noicon.png) no-repeat;
-    border-style: none;
-    float: left;
-    color: #6b8db1;
-    margin: 10px 30px 0px 10px;
-    margin-bottom: -32px;
-    left: 60px;
-    position: absolute;
-    top: 190px;
-    z-index: 100;
-    font-weight: bold;}
-button#accountCancel {
-    left: 200px;
+/* Card footer button spacing */
+.card-footer .btn {
+    margin-right: 0.5rem;
 }
-#allowUser,#cancelUser{
-    margin-top: 100px;
+
+/* Table active row styling for selected checkboxes */
+.table tbody tr.active {
+    background-color: rgba(0, 0, 0, 0.075);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .card-footer .btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+        margin-right: 0;
+    }
+}
+
+/* Edit button styling */
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+/* Modal styling adjustments */
+.modal-header .modal-title {
+    display: flex;
+    align-items: center;
+}
+
+/* Checkbox column alignment */
+.table th:first-child,
+.table td:first-child {
+    width: 40px;
+    text-align: center;
+}
+
+/* Ensure proper spacing in card body */
+.card-body .table-responsive {
+    margin-bottom: 0;
 }

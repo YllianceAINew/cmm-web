@@ -1,8 +1,9 @@
 var TableDatatablesManaged = function () {
+    var table;
 
     var initTable1 = function () {
 
-        var table = $("#sample_1");
+        table = $("#sample_1");
 
         // begin first table
         table.dataTable({
@@ -83,8 +84,12 @@ var TableDatatablesManaged = function () {
             jQuery.uniform.update(set);
         });
 
-        table.on('change', 'tbody tr .checkboxes', function () {
-            $(this).parents('tr').toggleClass("active");
+        table.on('change', 'tbody tr .hasCheckTD', function () {
+            if ($(this).is(":checked")) {
+                $(this).parents('tr').addClass("active");
+            } else {
+                $(this).parents('tr').removeClass("active");
+            }
         });
     }
 
@@ -96,6 +101,7 @@ var TableDatatablesManaged = function () {
                 return;
             }
             initTable1();
+            return table;
         }
 
     };
@@ -108,14 +114,33 @@ function onSelAllow()
     $(".hasCheckTD").each(function () {
         var checked = $(this).is(":checked");
         if (checked)
-            ids.push ($(this).attr("checkVal"));
+            ids.push($(this).attr("checkVal"));
     });
-    $.post(baseUrl + "member/regSelAllow",
-    {
-        "ids": ids
-    },
-    function(data, status){
-        location.href = location.href ;
+    
+    if (ids.length === 0) {
+        alert("Please select at least one member to allow.");
+        return;
+    }
+    
+    $.ajax({
+        type: 'POST',
+        url: baseUrl + "member/regSelAllow",
+        data: {
+            "ids": ids
+        },
+        dataType: 'html',
+        success: function(data, status) {
+            if (data == "success") {
+                $('#allowUser').modal('hide');
+                location.href = location.href;
+            } else {
+                alert("Error: Failed to allow selected members.");
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error("Error allowing members:", error);
+            alert("An error occurred while allowing members. Please try again.");
+        }
     });
 }
 
@@ -124,14 +149,33 @@ function onSelCancel(){
     $(".hasCheckTD").each(function () {
         var checked = $(this).is(":checked");
         if (checked)
-            ids.push ($(this).attr("checkVal"));
+            ids.push($(this).attr("checkVal"));
     });
-    $.post(baseUrl + "member/regSelCancel",
-    {
-        "ids": ids
-    },
-    function(data, status){
-        location.href = location.href ;
+    
+    if (ids.length === 0) {
+        alert("Please select at least one member to cancel.");
+        return;
+    }
+    
+    $.ajax({
+        type: 'POST',
+        url: baseUrl + "member/regSelCancel",
+        data: {
+            "ids": ids
+        },
+        dataType: 'html',
+        success: function(data, status) {
+            if (data == "success") {
+                $('#cancelUser').modal('hide');
+                location.href = location.href;
+            } else {
+                alert("Error: Failed to cancel selected members.");
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error("Error canceling members:", error);
+            alert("An error occurred while canceling members. Please try again.");
+        }
     });
 }
 
@@ -141,15 +185,17 @@ function onBackBtn(){
 
 $(document).ready(function () {
 
-    TableDatatablesManaged.init();
+    var table = TableDatatablesManaged.init();
 
     $(".checkAll").change(function () {
         var checked = $(this).is(":checked");
-        $(".hasCheckTD").each (function () {
-            if (checked == true)
-                $(this).prop("checked", true);
-            else
-                $(this).prop("checked", false);
+        $(".hasCheckTD").each(function () {
+            $(this).prop("checked", checked);
+            if (checked) {
+                $(this).parents('tr').addClass("active");
+            } else {
+                $(this).parents('tr').removeClass("active");
+            }
         });
     });
 
@@ -158,10 +204,11 @@ $(document).ready(function () {
         $(".hasCheckTD").each(function(){
             var checked = $(this).is(":checked");
             if(checked == true)
-            flag = 1;
+                flag = 1;
         });
         if(flag == 0){
-            location.href = location.href;
+            alert("Please select at least one member to allow.");
+            return false;
         }
     });
 
@@ -173,7 +220,8 @@ $(document).ready(function () {
                 flag = 1;
         });
         if(flag == 0) {
-            location.href = location.href;
+            alert("Please select at least one member to cancel.");
+            return false;
         }
     });
 

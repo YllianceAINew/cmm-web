@@ -446,11 +446,11 @@ class MemberController extends ControllerUIBase
     //          ici 2018.6.19          //
     //          가입자등록신청접수        //
     public function registerAction() {
-        $this->assets->addCss("pages/css/member_register.css");
-        $this->assets->addCss("global/plugins/datatables/datatables.css");
+        // $this->assets->addCss("pages/css/member_register.css");
+        // $this->assets->addCss("global/plugins/datatables/datatables.css");
 
-        $this->assets->addJs("global/plugins/datatables/datatables.js");
-        $this->assets->addJs("global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js");
+        // $this->assets->addJs("global/plugins/datatables/datatables.js");
+        // $this->assets->addJs("global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js");
         $this->assets->addJs("pages/scripts/member_register.js");
         $users = UserMemberModel::findBystate("-1");
         $this->view->users = $users;
