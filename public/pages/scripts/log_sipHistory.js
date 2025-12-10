@@ -107,9 +107,10 @@ if (App.isAngularJsApp() === false) {
     });
 }
 
-function onDeleteHistory(id)
+function onDeleteHistory()
 {
-    if (id == -1)
+    var id = $("#deleteHistId").text();
+    if (id == -1 || id == "")
         return;
     
     $.ajax({
@@ -212,7 +213,12 @@ $(document).ready(function () {
             location.href = location.href;
         }
         else
-            $("#alertDel h5").text("선택된 경보리력들을 삭제하겠습니까?");
+            $("#deleteLogMessage").text("선택된 경보리력들을 삭제하겠습니까?");
     });
+    $(".deleteHistBtn").click(function(){
+        var id = $(this).attr("data-id");
+        $("#deleteHistId").text(id);
+    });
+
     $("li#sipHistory").addClass("active");
 });
