@@ -144,7 +144,7 @@ class DashboardController extends ControllerUIBase
 
         $data = getdate();
     
-        /////    사용장등록상태   /////
+        /////    User Registration Status   /////
         if($this->request->hasQuery("selRegYear")) {
             if ($_GET["selRegYear"] != "")
                 $this->persistent->selRegYear =$_GET["selRegYear"];
@@ -170,7 +170,7 @@ class DashboardController extends ControllerUIBase
         $registerData = $this->RegisterChart();//print_r($this->RegisterChart());exit;
         $this->view->registerData = $registerData;
 
-        //////   사용자가입상태   /////
+        //////   User Login Status   /////
         if($this->request->hasQuery("selLogYear")) {
             if ($_GET["selLogYear"] != "")
                 $this->persistent->selLogYear =$_GET["selLogYear"];

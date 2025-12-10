@@ -237,21 +237,21 @@ class ServerController extends ControllerUIBase
 
         $actions = PropertyModel::findFirstByname("server.actions");
         if($actions->propValue == "" || $actions->propValue =="stop"){
-            $text = "봉사기중지";
+            $text = "Stop Server";
         }
         else
-            $text = "봉사기기동";
+            $text = "Start Server";
         $this->view->actions = $text;
-//허용IP설정        
+//Allow IP Setting        
         $ipList = ManagerIPListModel::find();
         $this->view->ipList = $ipList->toArray();
-//시간설정        
+//Time Setting        
         date_default_timezone_set('Asia/Pyongyang');
         $this->view->date = date("Y-m-d");
         $this->view->time = date("H:i:s");
         $ntpServerIP = PropertyModel::findFirstByname("ntp.server.ip");
         $this->view->ntpServerIP = $ntpServerIP->propValue;
-//리력보관기일설정
+//Log Retention Period Setting
         $text = PropertyModel::findFirstByname("xmpp.messagelog.validtime");
         $this->view->textTime = $this->compare($text->propValue);
         $login = PropertyModel::findFirstByname("xmpp.loginhistory.validtime");
@@ -260,19 +260,19 @@ class ServerController extends ControllerUIBase
         $this->view->alarmTime = $this->compare($alarm->propValue);
         $row = SipCycleModel::findFirstBytype('1');
         $this->view->callTime = $this->compare($row->remain);
-        $this->view->selectType = ["","1주","1달","1년","2년","3년","5년"];
+        $this->view->selectType = ["","1 week","1 month","1 year","2 years","3 years","5 years"];
         
     }
     
     public function compare($type=0){
         switch ($type) {
             case 0: return "";break;
-            case 7: return "1주";break;
-            case 31: return "1달";break;
-            case 365: return "1년";break;
-            case 365*2: return "2년";break;
-            case 365*3: return "3년";break;
-            case 365*5: return "5년";break;
+            case 7: return "1 week";break;
+            case 31: return "1 month";break;
+            case 365: return "1 year";break;
+            case 365*2: return "2 years";break;
+            case 365*3: return "3 years";break;
+            case 365*5: return "5 years";break;
         }
     }
     

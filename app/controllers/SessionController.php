@@ -123,7 +123,7 @@ class SessionController extends ControllerUIBase
 	// date_default_timezone_set('');
 
 	$date = date("Y.m.d h:i:s");
-	echo json_encode ("봉사기시간: " . $date);
+	echo json_encode ("Server Time: " . $date);
 	exit;
     }
 }

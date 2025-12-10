@@ -31,18 +31,18 @@ $(function () {
                 "sortDescending": ": activate to sort column descending"
             },
             "emptyTable": "No data.",
-            "info": "총 _TOTAL_ 개중 _START_ 부터 _END_ 까지",
+            "info": "Showing _START_ to _END_ of _TOTAL_ entries",
             "infoEmpty": "No data to display.",
             "infoFiltered": "",
             "lengthMenu": "Display&nbsp&nbsp_MENU_",
             "search": "",
             "searchPlaceholder": "Search···",
-            "zeroRecords": "검색결과가 없습니다.",
+            "zeroRecords": "No matching records found.",
             "paginate": {
-                "previous": "이전",
-                "next": "다음",
-                "last": "끝",
-                "first": "시작"
+                "previous": "Previous",
+                "next": "Next",
+                "last": "Last",
+                "first": "First"
             }
         },
         "buttons": [
@@ -183,7 +183,7 @@ $(document).ready(function () {
             location.href = location.href;
         }
         else
-            $("#deleteLogMessage").text("선택된 경보리력들을 삭제하겠습니까?");
+            $("#deleteLogMessage").text("Do you want to delete the selected alarm logs?");
     });
 
     $(".deleteHistBtn").click(function(){

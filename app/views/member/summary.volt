@@ -212,8 +212,8 @@
                             </div>
                             <div class="form-group">
                                 <select id="typeSelect" class="form-control">
-                                    <option value="all">전체</option>
-                                    <option value="1">차단</option>
+                                    <option value="all">All</option>
+                                    <option value="1">Blocked</option>
                                 </select>
                             </div>
                         </div>

@@ -306,7 +306,7 @@ class MemberController extends ControllerUIBase
     }
 
     //          ici 2018.6.19          //
-    //          급수목록                //
+    //          Level List                //
     public function levelListAction() {
         // $this->assets->addCss("pages/css/member_levelist.css");
 
@@ -332,7 +332,7 @@ class MemberController extends ControllerUIBase
         exit;
     }
     //     ici 2018.6.20      //
-    //        급수추가        //
+    //        Add Level        //
     public function insertLevelAction(){
         $no = $this->request->getPost("levNo");
         $name = $this->request->getPost("levName");
@@ -369,7 +369,7 @@ class MemberController extends ControllerUIBase
         exit;
     }
     //     ici 2018.6.20      //
-    //        급수편집        //
+    //        Edit Level        //
     public function editLevelAction(){
         $no = $this->request->getPost("levNo");
         $name = $this->request->getPost("levName");
@@ -392,7 +392,7 @@ class MemberController extends ControllerUIBase
         exit;
     }
     //     ici 2018.6.20      //
-    //        급수삭제        //
+    //        Delete Level        //
     public function removeLevelAction(){
         if ($this->request->hasPost("levNo")){
             $no = $this->request->getPost("levNo");
@@ -444,7 +444,7 @@ class MemberController extends ControllerUIBase
         exit;
     }
     //          ici 2018.6.19          //
-    //          가입자등록신청접수        //
+    //          Registration Request Acceptance        //
     public function registerAction() {
         // $this->assets->addCss("pages/css/member_register.css");
         // $this->assets->addCss("global/plugins/datatables/datatables.css");
@@ -457,7 +457,7 @@ class MemberController extends ControllerUIBase
     }
 
     //          ici 2018.6.19          //
-    //          가입자등록상세정보        //
+    //          Registration Detail Information        //
     public function regDetailAction($id = -1) {
         $this->assets->addCss("pages/css/member_regdetail.css");
         $this->assets->addJs("pages/scripts/member_regdetail.js");

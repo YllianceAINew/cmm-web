@@ -121,7 +121,7 @@
 	$messages['account_editaccount_comment'] = 'Input as following...';
 	$messages['account_editaccount_formhead'] = 'Account edit';
 	$messages['account_content_power'] = 'Permission';
-	//관리자목록
+	//Admin List
 	$messages['account_tab_viewaccount'] = 'Account List';
 	$messages['account_tab_registernew'] = 'Add';
 	$messages['account_tab_editaccount'] = 'Edit';
@@ -158,7 +158,7 @@
 	$messages['account_edit_alert'] = 'Log';
 	$messages['account_edit_register'] = 'Register Accept';
 
-	//봉사기설정
+	//Server Setting
 	$messages['setserver_title'] = 'Server setting';
 
 	$messages['setserver_database'] = 'Database setting';
@@ -189,7 +189,7 @@
 	$messages['addIP'] = 'Add IP';
 	$messages['addServer'] = 'Add Server';
 
-	//첫 페지
+	//Dashboard
 	$messages['dashboard_page_title'] = 'First';
 
 	$messages['dashboard_register'] = 'User reg';
@@ -210,7 +210,7 @@
 	$messages['dashboard_used'] = 'Used :';
 	$messages['dashboard_free'] = 'Free :';
 
-	//봉사기상태
+	//Server State
 	$messages['server_state'] = 'Server state';
 
 	$messages['state_openfire'] = 'Openfire';
@@ -244,7 +244,7 @@
 	$messages['used'] = 'Used';
 
 
-	//통화리력
+	//Call Log
 	$messages['server_callog'] = 'Call log';
 
 	$messages['callog_thead_sender'] = 'Caller';
@@ -267,7 +267,7 @@
 	$messages['callog_modal_body'] = 'text :';
 	$messages['callog_modal_type'] = 'type :';
 
-	//대화리력
+	//Text Log
 	$messages['textlog_msg_seldelete'] = 'select items to delete.';
 	$messages['textlog_msg_delete'] = 'want to delete textlog?';
 	$messages['textlog_msg_multidel'] = 'want to delete selected text log?';
@@ -289,7 +289,7 @@
 	$messages['video'] = 'video';
 	$messages['image'] = 'image';
 
-	//가입리력
+	//Sign Log
 	$messages['signlog_msg_seldelete'] = 'select items to delete';
 	$messages['signlog_msg_delete'] = 'want to delete sign log?';
 	$messages['signlog_msg_multidel'] = 'want to delete selected signlog?';
@@ -305,7 +305,7 @@
 	$messages['signlog_modal_user'] = 'user :';
 
 
-	//경보리력
+	//Alarm Log
 	$messages['server_alarmlog'] = 'XMPP log';
 	$messages['server_kamailiolog'] = 'SIP log';
 	$messages['alarm_thead_level'] = 'level';
@@ -323,7 +323,7 @@
 	$messages['alarm_modal_body'] = 'body :';
 	$messages['alarm_modal_level'] = 'level :';
 	$messages['alarm_modal_all'] = 'all';
-	//가입자등록신청접수
+	//Registration Request Acceptance
 	$messages['registration_register'] = 'registration accept';
 
 	$messages['register_thead_request'] = 'date requested';
@@ -361,7 +361,7 @@
 	$messages['detail_group'] = 'group :';
 	$messages['detail_undefined'] = 'undefined';
 
-	//가입자목록
+	//Member List
 	$messages['summary_thead_state'] = 'login state';
 	$messages['summary_thead_id'] = 'user ID';
 	$messages['summary_thead_phone'] = 'phone number';
@@ -393,13 +393,13 @@
 	$messages['summary_modal_stop'] = 'stop state :';
 	$messages['summary_modal_del'] = 'delete user';
 
-	//급수호출조종
+	//Level Call Control
 	$messages['setlevel_save'] = 'save';
 	$messages['setlevel_level'] = 'level';
 	$messages['setlevel_modal_save'] = 'level save';
 	$messages['setlevel_msg_save'] = 'save?';
 
-	//급수목록
+	//Level List
 	$messages['levelist_title'] = '';
 
 	$messages['level_thead_levelno'] = 'level';

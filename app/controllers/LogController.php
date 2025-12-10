@@ -38,7 +38,7 @@ class LogController extends ControllerUIBase
         return $result;
     }
 
-    //          가입리력         //
+    //          Sign-in History         //
     public function signlogAction($user = "",$intime = "",$outime = ""){
         // AdminLTE3 DataTables libraries
         $this->assets->addJs("adminlte/plugins/datatables/jquery.dataTables.min.js");

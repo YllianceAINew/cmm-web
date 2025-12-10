@@ -3,7 +3,7 @@ var onInsertLevel = function(){
     levName = $("#insertModal #levelName").val();
     levDesc = $("#insertModal #levelDesc").val();
     if (!levNo || !levName || !levDesc) {
-        alertbox("","정보를 정확히 입력하시오.","warning");
+        alertbox("","Please enter the information correctly.","warning");
     } else {
         $.ajax({
             type: 'POST',
@@ -16,7 +16,7 @@ var onInsertLevel = function(){
             dataType: 'html',
             success: function(res){
                 if (res == "error")
-                    alertbox("","이미 존재하는 급수입니다.","warning");
+                    alertbox("","This level already exists.","warning");
                 else
                     location.href = location.href;
             },
@@ -30,7 +30,7 @@ var onEditLevel = function(){
     levName = $("#editModal #levelName").val();
     levDesc = $("#editModal #levelDesc").val();
     if (!levNo || !levName || !levDesc) {
-        alertbox("","정보를 정확히 입력하시오.","warning");
+        alertbox("","Please enter the information correctly.","warning");
     } else {
         $.ajax({
             type: 'POST',
@@ -43,7 +43,7 @@ var onEditLevel = function(){
             dataType: 'html',
             success: function(res){
                 if (res == "error")
-                    alert("조작이 실패하였습니다.");
+                    alert("Operation failed.");
                 location.href = location.href;
             },
             error: function() {
@@ -97,7 +97,7 @@ $(document).ready(function () {
     $(".blockChecks").click(function(){
         var id = $(this).attr("dataval");
         var state = $(this).is(":checked");
-        if (!confirm(state==false?"급수를 복귀하겠습니까?":"급수를 페쇄하겠습니까?")) {
+        if (!confirm(state==false?"Do you want to restore the level?":"Do you want to block the level?")) {
             $(this).prop("checked", !state);
             return;
         }
@@ -112,7 +112,7 @@ $(document).ready(function () {
             success: function(res){
             },
             error: function() {
-                console.log("조작이 실패하였습니다.");
+                console.log("Operation failed.");
             }
         });
     });
@@ -155,7 +155,7 @@ $(document).ready(function () {
             location.href = location.href;
         }
         else
-            $("#removeModalMessage").text("선택된 급수들을 삭제하겠습니까?");
+            $("#removeModalMessage").text("Do you want to delete the selected levels?");
     });
 
     $("li#levelist").addClass("active");

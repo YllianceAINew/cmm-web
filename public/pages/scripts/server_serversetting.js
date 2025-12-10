@@ -14,13 +14,13 @@ var onRestartService = function(){
 var onStopService = function(){
 	var type = "";
 	var text = "";
-	if($("#stopButton").text() == "봉사기중지"){
+	if($("#stopButton").text() == "Stop Server"){
 		type = "stop";
-		text = "봉사기기동";		
+		text = "Start Server";		
 	}
-	else if($("#stopButton").text() == "봉사기기동"){
+	else if($("#stopButton").text() == "Start Server"){
 		type = "start";
-		text = "봉사기중지";
+		text = "Stop Server";
 	}
 	$.ajax({
 		type : "POST",
@@ -46,14 +46,14 @@ var onSetServerTime = function(){
 			},
 			dataType : "html",
 			success : function(res) {
-				alertbox("","정확히 설정되였습니다.","success");
+				alertbox("","Settings have been saved successfully.","success");
 				//location.href = location.href
 			},
 			error : function () {}
 		});
 	}else{
 		if($("#setTimeServer").val() == ""){
-			alertbox("","시간봉사기주소를 입력하여주십시오.","warning");return;
+			alertbox("","Please enter the time server address.","warning");return;
 		}else{
 			$.ajax({
 				type : "POST",
@@ -63,7 +63,7 @@ var onSetServerTime = function(){
 				},
 				dataType : "html",
 				success : function(res) {
-					alertbox("","정확히 설정되였습니다.","success");
+					alertbox("","Settings have been saved successfully.","success");
 					//location.href = location.href
 				},
 				error : function () {}
@@ -88,12 +88,12 @@ var onSetServerIp = function(){
 function compare(type){
 	switch(type){
 		case "":return 0;break;
-		case "1주": return 7;break;
-		case "1달": return 31;break;
-		case "1년": return 365;break;
-		case "2년": return 365*2;break;
-		case "3년": return 365*3;break;
-		case "5년": return 365*5;break;
+		case "1 week": return 7;break;
+		case "1 month": return 31;break;
+		case "1 year": return 365;break;
+		case "2 years": return 365*2;break;
+		case "3 years": return 365*3;break;
+		case "5 years": return 365*5;break;
 	}
 }
 var onSetLogTime = function(){
@@ -136,7 +136,7 @@ var onAddAddr = function(){
 		dataType : "html",
 		success : function(res) {
 			if(res =="error"){
-				alertbox("","이미 존재하는 IP주소입니다.","warning");return;
+				alertbox("","This IP address already exists.","warning");return;
 			}
 			else
 				location.href = baseUrl + "server/serversetting";
@@ -222,7 +222,7 @@ $(document).ready(function () {
     });
 
     $(".editIP").click(function(){
-    	$("#editIP h4").text("IP편집");
+    	$("#editIP h4").text("Edit IP");
     	$("#editIP #input").val($(this).parent().parent().find("[class='allowip']").text());
     	$("#editIP #allowNo").val($(this).parent().parent().find("[class='allowNo']").val());
     });

@@ -62,11 +62,11 @@
                         }
                         
                         if($hour != 0)
-                            $time = $hour." 시간 ".$min." 분 ".$sec." 초 ";
+                            $time = $hour." hour ".$min." min ".$sec." sec ";
                         elseif($min != 0)
-                            $time = $min." 분 ".$sec." 초 ";
+                            $time = $min." min ".$sec." sec ";
                         else
-                            $time = $sec." 초 ";
+                            $time = $sec." sec ";
                     ?>
                     <tr>
                         <td class="hasCheckTD">
