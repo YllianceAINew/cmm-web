@@ -139,17 +139,29 @@ class ServerController extends ControllerUIBase
 
     public function indexAction()
     {
-        $this->assets->addJs("global/plugins/datatables/datatables.js");
-        $this->assets->addJs("global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js");
+        // AdminLTE3 DataTables libraries
+        $this->assets->addJs("adminlte/plugins/datatables/jquery.dataTables.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js");
+        $this->assets->addJs("adminlte/plugins/jszip/jszip.min.js");
+        $this->assets->addJs("adminlte/plugins/pdfmake/pdfmake.min.js");
+        $this->assets->addJs("adminlte/plugins/pdfmake/vfs_fonts.js");
+        $this->assets->addJs("adminlte/plugins/datatables-buttons/js/buttons.html5.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-buttons/js/buttons.print.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js");
+        
         $this->assets->addJs("global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js");
-        $this->assets->addJs("global/plugins/bootstrap-toastr/toastr.min.js");
         $this->assets->addJs("pages/scripts/localization.js");
         $this->assets->addJs("pages/scripts/server_index.js");
-
-        // $this->assets->addCss("pages/css/server_index.css");
-        // $this->assets->addCss("global/plugins/datatables/datatables.css");
-        // $this->assets->addCss("global/plugins/bootstrap-toastr/toastr.min.css");
-        // $this->assets->addCss("global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css");
+        
+        // AdminLTE3 DataTables CSS
+        $this->assets->addCss("adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css");
+        $this->assets->addCss("adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css");
+        $this->assets->addCss("adminlte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css");
+        $this->assets->addCss("global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css");
 
         $adminMembers = AdminMemberModel::find();
         $this->view->members = $adminMembers;
