@@ -1,42 +1,29 @@
-button#searchlog,
-button#deletelog{
-    height: 26px;
-    width: 112px;
-    padding-left: 13px;
-    letter-spacing: 10px;
-    background: url(/adminpage/login/btn_noicon.png) no-repeat;
-    border-style: none;
-    float: left;
-    color: #6b8db1;
-    margin: 10px 30px 0px 10px;
-    left: 60px;
-    position: absolute;
-    top: 190px;
-    z-index: 100;
-    font-weight: bold;}
-button#deletelog{
-    left: 200px;}
-#searchLog, #deleteLog,#delete{
-	margin-top:100px;}
-#searchBody{
-	height:150px;}
-.modal-label{
+/* AdminLTE 3 Styled Sign Log Page */
+
+/* Date picker input group styling */
+.input-daterange.input-group {
     width: 100%;
-    margin-top: 8px;
-    margin-bottom: 0px;
-    padding: 7px;}
-#bodyText{
-    margin-top: 5px;
-    padding-right: 0px;}
-#user{
-	margin-top:15px;}
-#intime,#outime{
-	margin-top:8px;}
-#logbtn{
-    width: 100%;
-    height: 40px;
-    margin-top: -40px;
-    margin-left: 20px;}
+}
+
+.input-daterange .input-group-addon {
+    background-color: #e9ecef;
+    border-color: #ced4da;
+    min-width: 50px;
+    text-align: center;
+}
+
 .input-daterange input {
     text-align: left;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #sample_1 {
+        font-size: 0.875rem;
+    }
+    
+    #sample_1 th,
+    #sample_1 td {
+        padding: 0.5rem;
+    }
 }
