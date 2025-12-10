@@ -1,80 +1,84 @@
-select {
-    width: 85%;
-    height: 34px;
-    padding: 6px 12px;
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #555;
-    background-color: #fff;
-    background-image: none;
-    border: 1px solid #ccc;
+/* AdminLTE 3 Server Setting Page Styles */
+
+/* Form controls styling */
+#setTimeServer,
+#setDate,
+#setTime {
+  width: 100%;
 }
 
-.settingButton, #restartButton, #stopButton{
-    background: url(/adminpage/login/dialog_btn.png) no-repeat;
-    height: 27px;
-    width: 75px;
-    border-style: none;
-    float: left;
-    margin-left: 30%;
-    color: #6b8db1;
-    margin-top: 10px;
-    margin-bottom: 10px;
-	font-weight: bold;
+/* Select dropdowns */
+#textDate,
+#callDate,
+#logDate,
+#alarmDate {
+  width: 100%;
 }
 
-.portlet.box.blue > .portlet-title {
-	background-color: #3598dc;
-	background: #4e95d2;
-	background-image: url('/adminpage/login/title_gradient.png');
-	border: 1px solid #5c99cc;
-	height: 40px;
+/* Timepicker widget positioning */
+.bootstrap-timepicker-widget {
+  position: absolute;
+  z-index: 1050;
+  margin-top: 6px;
 }
-.portlet-notop{
-	margin-top:0;
+
+/* Table styling improvements */
+.table-responsive {
+  overflow-y: auto;
 }
-#ip0 ,#nm0,#gw0,#setDate,#setTime,#setTimeServer{
-	margin-left:15px;
-	margin-bottom:3px;
-	width: 250px;
+
+.table-sm th,
+.table-sm td {
+  padding: 0.5rem;
+  vertical-align: middle;
 }
-#selectType{
-	margin-left:18px;
-	margin-bottom:3px;
+
+.table thead th {
+  border-bottom: 2px solid #dee2e6;
+  font-weight: 600;
 }
-#dev0 > p{
-	margin-bottom:6px;
-	width:95px;
-	text-align: right;
+
+/* Checkbox alignment in table */
+.table .form-check-input {
+  margin-top: 0.25rem;
 }
-#dev1 > p{
-	margin-bottom:6px;
-	width: 100px;
+
+/* Card spacing */
+.card {
+  margin-bottom: 1.5rem;
 }
-#setdate{
-	margin-top:10px;
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .col-md-4.d-flex {
+    margin-top: 1rem;
+  }
+  
+  .btn-lg {
+    width: 100%;
+  }
 }
-#textDate,#callDate,#logDate,#alarmDate{
-	height: 34px;
-	width: 250px;
-	font-size: 14px;
-	margin-left: 10px;
-	margin-bottom: 3px;
+
+/* Modal improvements */
+.modal-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
-.bootstrap-timepicker-widget{
-	position: absolute;
-	z-index: 10;
-	margin-top: 6px;
+
+.modal-footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
 }
-.table>thead>tr>th,.table>tbody>tr>td{
-	padding: 0px;
+
+/* Form group spacing */
+.form-group {
+  margin-bottom: 1.25rem;
 }
-.table>tbody>tr>td{
-	background-color: #fff;
+
+/* Button spacing in cards */
+.card-body .btn {
+  margin-bottom: 0.5rem;
 }
-.table-scrollable{
-	overflow-y: auto; 
-}
-select{
-	background-color: #fff;
+
+/* Ensure proper spacing for collapsed cards */
+.card.collapsed-card .card-body {
+  display: none;
 }

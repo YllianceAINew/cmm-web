@@ -222,9 +222,10 @@ $(document).ready(function () {
     });
 
     $(".editIP").click(function(){
-    	$("#editIP h4").text("Edit IP");
-    	$("#editIP #input").val($(this).parent().parent().find("[class='allowip']").text());
-    	$("#editIP #allowNo").val($(this).parent().parent().find("[class='allowNo']").val());
+    	var $row = $(this).closest("tr");
+    	$("#editIP .modal-title").text("Edit IP");
+    	$("#editIP #input").val($row.find(".allowip").text());
+    	$("#editIP #allowNo").val($row.data("allow-no"));
     });
 
     $("#ipDelete").click(function(){

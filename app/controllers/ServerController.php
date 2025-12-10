@@ -208,18 +208,18 @@ class ServerController extends ControllerUIBase
         }
     }
     public function serversettingAction(){
-        $this->assets->addCss("pages/css/serversetting.css");
-        $this->assets->addCss("global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css");
-        $this->assets->addCss("global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css");
+        // $this->assets->addCss("pages/css/serversetting.css");
+        // $this->assets->addCss("global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css");
+        // $this->assets->addCss("global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css");
         
-        $this->assets->addJs("global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js");
-        $this->assets->addJs("global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js");
-        $this->assets->addJs("global/plugins/jquery.input-ip-address-control-1.0.min.js");
-        $this->assets->addJs("global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js");
-        $this->assets->addJs("/global/plugins/jquery.blockui.min.js");
-        $this->assets->addJs("pages/scripts/components-date-time-pickers.min.js");
-        $this->assets->addJs("pages/scripts/form-input-mask.js");
-        $this->assets->addJs("pages/scripts/ui-blockui.js");
+        // $this->assets->addJs("global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js");
+        // $this->assets->addJs("global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js");
+        // $this->assets->addJs("global/plugins/jquery.input-ip-address-control-1.0.min.js");
+        // $this->assets->addJs("global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js");
+        // $this->assets->addJs("/global/plugins/jquery.blockui.min.js");
+        // $this->assets->addJs("pages/scripts/components-date-time-pickers.min.js");
+        // $this->assets->addJs("pages/scripts/form-input-mask.js");
+        // $this->assets->addJs("pages/scripts/ui-blockui.js");
         $this->assets->addJs("pages/scripts/server_serversetting.js");
 
         if($this->request->isPost()){
