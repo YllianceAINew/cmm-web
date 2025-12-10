@@ -308,7 +308,7 @@ class MemberController extends ControllerUIBase
     //          ici 2018.6.19          //
     //          급수목록                //
     public function levelListAction() {
-        $this->assets->addCss("pages/css/member_levelist.css");
+        // $this->assets->addCss("pages/css/member_levelist.css");
 
         $this->assets->addJs("pages/scripts/member_levelList.js");
         $levels = LevelDetailModel::find(["order" => "level"]);

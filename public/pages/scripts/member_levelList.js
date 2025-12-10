@@ -26,7 +26,7 @@ var onInsertLevel = function(){
     }
 };
 var onEditLevel = function(){
-    levNo = $("#editModal #levelNo").text();
+    levNo = $("#editModal #levelNo").val();
     levName = $("#editModal #levelName").val();
     levDesc = $("#editModal #levelDesc").val();
     if (!levNo || !levName || !levDesc) {
@@ -132,7 +132,7 @@ $(document).ready(function () {
     });
 
     $(".editLevel").click(function(){
-        $("#editModal #levelNo").text($(this).parent().parent().find("[class='levelNums']").text());
+        $("#editModal #levelNo").val($(this).parent().parent().find("[class='levelNums']").text());
         $("#editModal #levelName").val($(this).parent().parent().find("[class='levelNames']").text());
         $("#editModal #levelDesc").val($(this).parent().parent().find("[class='levelDescs']").text());
     });
@@ -155,7 +155,7 @@ $(document).ready(function () {
             location.href = location.href;
         }
         else
-            $("#removeModal h5").text("선택된 급수들을 삭제하겠습니까?");
+            $("#removeModalMessage").text("선택된 급수들을 삭제하겠습니까?");
     });
 
     $("li#levelist").addClass("active");
