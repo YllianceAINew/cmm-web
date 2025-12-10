@@ -1,28 +1,37 @@
-button#accountAdd {
-    height: 26px;
-    width: 112px;
-    padding-left: 13px;
-    letter-spacing: 10px;
-    background: url(/adminpage/login/btn_noicon.png) no-repeat;
-    border-style: none;
-    float: left;
-    margin-left: 19px;
-    color: #6b8db1;
-    padding: 0 0 3 20;
-    margin-right: 100px;
-    margin-bottom:10px;
-    margin-top: 3px;
-    font-weight: bold;}
-table{
-    width: inherit!important;
-    margin-top: 30px;
+/* AdminLTE 3 Styled Set Level Matrix */
+
+#levelMatrixTable {
+    width: 100%;
 }
-th,td{width: 70px;}
-#saveModal{
-    margin-top:100px;
+
+#levelMatrixTable thead th {
+    font-weight: 600;
+    vertical-align: middle;
 }
-#theadid{
-    background-color:#A2B4CB; 
-    color:black;
-    text-align: center;
-} 
+
+#levelMatrixTable tbody td {
+    vertical-align: middle;
+}
+
+#levelMatrixTable .callerTD {
+    font-weight: 600;
+}
+
+#levelMatrixTable .tdCheck {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #levelMatrixTable {
+        font-size: 0.875rem;
+    }
+    
+    #levelMatrixTable th,
+    #levelMatrixTable td {
+        padding: 0.5rem;
+        min-width: 60px;
+    }
+}

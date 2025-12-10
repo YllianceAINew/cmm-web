@@ -1,68 +1,101 @@
 {{ content() }}
-<!-- BEGIN CONTENT -->
 <script type="text/javascript">
     var baseUrl = "{{ url() }}";
     var levelSet = {{lvSet | json_encode}};
 </script>
 
-<div class="page-content-wrapper">
-    <!-- BEGIN CONTENT BODY -->
-    <div class="page-content" >
-        <div>                            <!-- class="portlet light bordered" -->
-            <div class="portlet-body">
-                <div class="tab-content">
-                    <h3>{{ lang._('setlevel') }}</h3>
-                    <div class="div-view table-responsive">
-                        <button id="accountAdd"  data-toggle="modal" href = "#saveModal">{{ lang._('setlevel_save') }}</button><br>
-                        <table class="table table-striped table-bordered" >
-                        <thead>
-                            <tr class="table-head">
-                                <td id="theadid">{{ lang._('setlevel_level') }}</td>
-                                {% for lv in lvSet %}
-                                    <td class="calleeTD" id="theadid"> {{lv}} </td>
-                                {% endfor %}
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <input type="hidden" value='{{strArr}}' id="strArrs">
-                            {% for lv in lvSet %}
-                            <tr>
-                                <td class="callerTD" id="theadid" callerData="{{lv}}">{{lv}}</td>
-                                {% for lv in lvSet %}
-                                    <td> <input type= "checkbox" class="tdCheck" dataVal="{{lv}}"/> </td>
-                                {% endfor %}
-                            </tr>
-                            {% endfor %}
-
-                        </tbody>
-                        </table>
-                    </div>
-                </div>
+<!-- Set Level Matrix Card -->
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">
+            <i class="fas fa-project-diagram mr-1"></i>
+            {{ lang._('setlevel') }}
+        </h3>
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+            </button>
+        </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <button id="accountAdd" class="btn btn-primary" data-toggle="modal" href="#saveModal">
+                    <i class="fas fa-save mr-1"></i>
+                    {{ lang._('setlevel_save') }}
+                </button>
             </div>
         </div>
-    </div> 
- <!-- page-content -->
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover" id="levelMatrixTable">
+                <thead>
+                    <tr>
+                        <th class="text-center" style="background-color: #6c757d; color: white; min-width: 100px;">
+                            {{ lang._('setlevel_level') }}
+                        </th>
+                        {% for lv in lvSet %}
+                            <th class="text-center calleeTD" style="background-color: #6c757d; color: white; min-width: 80px;">
+                                {{lv}}
+                            </th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    <input type="hidden" value='{{strArr}}' id="strArrs">
+                    {% for lv in lvSet %}
+                    <tr>
+                        <td class="text-center font-weight-bold callerTD" callerdata="{{lv}}" style="background-color: #e9ecef; min-width: 100px;">
+                            {{lv}}
+                        </td>
+                        {% for lv2 in lvSet %}
+                            <td class="text-center">
+                                <input type="checkbox" class="tdCheck" dataVal="{{lv2}}" style="width: 18px; height: 18px; cursor: pointer;">
+                            </td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="alert alert-info mt-3">
+            <i class="icon fas fa-info-circle"></i>
+            {{ lang._('setlevel_msg_save') }}
+        </div>
+    </div>
+    <!-- /.card-body -->
+</div>
+<!-- /.card -->
 
-    <div id="saveModal" class="modal fade" tabindex="-1" aria-hidden="true" style="margin-top:100px;">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title">{{ lang._('setlevel_modal_save') }}</h4>
+<!-- Save Level Configuration Modal -->
+<div id="saveModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    <i class="fas fa-save mr-1"></i>
+                    {{ lang._('setlevel_modal_save') }}
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-warning">
+                    <i class="icon fas fa-exclamation-triangle"></i>
+                    {{ lang._('setlevel_msg_save') }}
                 </div>
-                <div class="modal-body">
-                    <div class="scroller" id="delBody" data-always-visible="1" data-rail-visible1="1">
-                        <div class="row">
-                            <h5>{{ lang._('setlevel_msg_save') }}</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" id="okBtn" data-dismiss="modal" onclick="onSaveLevel()">{{ lang._('btn_ok') }}</button>
-                    <button type="button" id="cancelBtn" data-dismiss="modal" >{{ lang._('btn_cancel') }}</button>                    
-                </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    <i class="fas fa-times mr-1"></i>
+                    {{ lang._('btn_cancel') }}
+                </button>
+                <button type="submit" id="okBtn" class="btn btn-primary" data-dismiss="modal" onclick="onSaveLevel()">
+                    <i class="fas fa-check mr-1"></i>
+                    {{ lang._('btn_ok') }}
+                </button>
             </div>
         </div>
     </div>
-
 </div>

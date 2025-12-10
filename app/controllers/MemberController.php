@@ -253,7 +253,7 @@ class MemberController extends ControllerUIBase
 
     public function setlevelAction()
     {   
-        $this->assets->addCss("pages/css/member_setlevel.css");
+        // $this->assets->addCss("pages/css/member_setlevel.css");
 
         $levels = LevelDetailModel::find(["order" => "level"]);
         $levelSet = [];
