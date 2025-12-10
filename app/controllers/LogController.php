@@ -40,16 +40,30 @@ class LogController extends ControllerUIBase
 
     //          가입리력         //
     public function signlogAction($user = "",$intime = "",$outime = ""){
-        // $this->assets->addCss("pages/css/log_signlog.css");
+        // AdminLTE3 DataTables libraries
+        $this->assets->addJs("adminlte/plugins/datatables/jquery.dataTables.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js");
+        $this->assets->addJs("adminlte/plugins/jszip/jszip.min.js");
+        $this->assets->addJs("adminlte/plugins/pdfmake/pdfmake.min.js");
+        $this->assets->addJs("adminlte/plugins/pdfmake/vfs_fonts.js");
+        $this->assets->addJs("adminlte/plugins/datatables-buttons/js/buttons.html5.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-buttons/js/buttons.print.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js");
+        
+        $this->assets->addJs("global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js");
+        $this->assets->addJs("pages/scripts/components-date-time-pickers.min.js");
         $this->assets->addJs("pages/scripts/log_signlog.js");
-
-        // $this->assets->addCss("global/plugins/datatables/datatables.css");
-        // $this->assets->addCss("global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css"); 
-
-        // $this->assets->addJs("global/plugins/datatables/datatables.js");
-        // $this->assets->addJs("global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js");
-        // $this->assets->addJs("pages/scripts/components-date-time-pickers.min.js");
-        // $this->assets->addJs("global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js");
+        
+        // AdminLTE3 DataTables CSS
+        $this->assets->addCss("adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css");
+        $this->assets->addCss("adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css");
+        $this->assets->addCss("adminlte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css");
+        $this->assets->addCss("global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css");
+        $this->assets->addCss("pages/css/log_signlog.css");
 
         $user = substr($user, 5,strlen($user) - 5);
         $intime = substr($intime, 3,strlen($intime) - 3);
@@ -75,16 +89,30 @@ class LogController extends ControllerUIBase
     }
 
     public function textlogAction($sentFrom = "",$sentTo = "",$sender = "",$receiver = "",$text = "",$select = ""){
-        // $this->assets->addCss("pages/css/log_textlog.css");
+        // AdminLTE3 DataTables libraries
+        $this->assets->addJs("adminlte/plugins/datatables/jquery.dataTables.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js");
+        $this->assets->addJs("adminlte/plugins/jszip/jszip.min.js");
+        $this->assets->addJs("adminlte/plugins/pdfmake/pdfmake.min.js");
+        $this->assets->addJs("adminlte/plugins/pdfmake/vfs_fonts.js");
+        $this->assets->addJs("adminlte/plugins/datatables-buttons/js/buttons.html5.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-buttons/js/buttons.print.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js");
+        
+        $this->assets->addJs("global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js");
+        $this->assets->addJs("pages/scripts/components-date-time-pickers.min.js");
         $this->assets->addJs("pages/scripts/log_textlog.js");
-
-        // $this->assets->addCss("global/plugins/datatables/datatables.css");
-        // $this->assets->addCss("global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css"); 
-
-        // $this->assets->addJs("global/plugins/datatables/datatables.js");
-        // $this->assets->addJs("global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js");
-        // $this->assets->addJs("pages/scripts/components-date-time-pickers.min.js");
-        // $this->assets->addJs("global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js");
+        
+        // AdminLTE3 DataTables CSS
+        $this->assets->addCss("adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css");
+        $this->assets->addCss("adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css");
+        $this->assets->addCss("adminlte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css");
+        $this->assets->addCss("global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css");
+        $this->assets->addCss("pages/css/log_textlog.css");
         $reason = [$this->lang['ok'],$this->lang['notexist'],$this->lang['nothave'],$this->lang['sendstop'],$this->lang['rcvdstop'],$this->lang['sndlevel'],$this->lang['rcvdlevel']];
         $fileType = [$this->lang['messages'],$this->lang['voice'],$this->lang['videoRecord'],$this->lang['imageRecord'],$this->lang['music'],$this->lang['video'],$this->lang['image']];
 
@@ -120,15 +148,29 @@ class LogController extends ControllerUIBase
     }
 
     public function xmppHistoryAction($crtFrom = "", $crtTo = "", $content = "",$type = "") {
-        // $this->assets->addCss("global/plugins/datatables/datatables.css");
-        // $this->assets->addCss("global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css");
-        // $this->assets->addCss("pages/css/log_history.css");
+        // AdminLTE3 DataTables libraries
+        $this->assets->addJs("adminlte/plugins/datatables/jquery.dataTables.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js");
+        $this->assets->addJs("adminlte/plugins/jszip/jszip.min.js");
+        $this->assets->addJs("adminlte/plugins/pdfmake/pdfmake.min.js");
+        $this->assets->addJs("adminlte/plugins/pdfmake/vfs_fonts.js");
+        $this->assets->addJs("adminlte/plugins/datatables-buttons/js/buttons.html5.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-buttons/js/buttons.print.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js");
         
-        // $this->assets->addJs("global/plugins/datatables/datatables.js");
-        // $this->assets->addJs("global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js");
-        // $this->assets->addJs("pages/scripts/components-date-time-pickers.min.js");
-        // $this->assets->addJs("global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js");
+        $this->assets->addJs("global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js");
+        $this->assets->addJs("pages/scripts/components-date-time-pickers.min.js");
         $this->assets->addJs("pages/scripts/log_xmppHistory.js");
+        
+        // AdminLTE3 DataTables CSS
+        $this->assets->addCss("adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css");
+        $this->assets->addCss("adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css");
+        $this->assets->addCss("adminlte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css");
+        $this->assets->addCss("global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css");
         $level = [$this->lang['hint'],$this->lang['alert'] ,$this->lang['error'] ];
 
         $crtFrom = substr($crtFrom, 5, strlen($crtFrom) - 5);
@@ -163,15 +205,29 @@ class LogController extends ControllerUIBase
 
     }
     public function sipHistoryAction($crtFrom = "", $crtTo = "", $content = "",$type = "") {
-        // $this->assets->addCss("global/plugins/datatables/datatables.css");
-        // $this->assets->addCss("global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css");
-        // $this->assets->addCss("pages/css/log_history.css");
+        // AdminLTE3 DataTables libraries
+        $this->assets->addJs("adminlte/plugins/datatables/jquery.dataTables.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js");
+        $this->assets->addJs("adminlte/plugins/jszip/jszip.min.js");
+        $this->assets->addJs("adminlte/plugins/pdfmake/pdfmake.min.js");
+        $this->assets->addJs("adminlte/plugins/pdfmake/vfs_fonts.js");
+        $this->assets->addJs("adminlte/plugins/datatables-buttons/js/buttons.html5.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-buttons/js/buttons.print.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js");
         
-        // $this->assets->addJs("global/plugins/datatables/datatables.js");
         // $this->assets->addJs("global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js");
         // $this->assets->addJs("pages/scripts/components-date-time-pickers.min.js");
-        // $this->assets->addJs("global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js");
         $this->assets->addJs("pages/scripts/log_sipHistory.js");
+        
+        // AdminLTE3 DataTables CSS
+        $this->assets->addCss("adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css");
+        $this->assets->addCss("adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css");
+        $this->assets->addCss("adminlte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css");
+        // $this->assets->addCss("global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css");
         $level = [$this->lang['hint'],$this->lang['alert'] ,$this->lang['error'] ];
 
         $crtFrom = substr($crtFrom, 5, strlen($crtFrom) - 5);
@@ -180,7 +236,7 @@ class LogController extends ControllerUIBase
         $type = substr($type, 5, strlen($type) - 5);
         $cond = "";
         if($content =="" && ($type =="" || $type =="all") && $crtFrom =="" && $crtTo =="")
-            $sql = "select * from alertlog order by time desc limit 1000";
+            $sql = "select * from alertlog order by time desc limit 5000";
         else{
             if ($content != "") 
                 $cond .= "logContent LIKE '%".$content."%' AND ";
@@ -221,15 +277,30 @@ class LogController extends ControllerUIBase
     }
 
     public function calllogAction($sentFrom = "",$sentTo = "",$sender = "",$receiver = "") {
-        // $this->assets->addCss("global/plugins/datatables/datatables.css");
-        // $this->assets->addCss("global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css"); 
-        // $this->assets->addCss("pages/css/log_calllog.css");
-
-        // $this->assets->addJs("global/plugins/datatables/datatables.js");
-        // $this->assets->addJs("global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js");
-        // $this->assets->addJs("pages/scripts/components-date-time-pickers.min.js");
-        // $this->assets->addJs("global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js");
+        // AdminLTE3 DataTables libraries
+        $this->assets->addJs("adminlte/plugins/datatables/jquery.dataTables.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js");
+        $this->assets->addJs("adminlte/plugins/jszip/jszip.min.js");
+        $this->assets->addJs("adminlte/plugins/pdfmake/pdfmake.min.js");
+        $this->assets->addJs("adminlte/plugins/pdfmake/vfs_fonts.js");
+        $this->assets->addJs("adminlte/plugins/datatables-buttons/js/buttons.html5.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-buttons/js/buttons.print.min.js");
+        $this->assets->addJs("adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js");
+        
+        $this->assets->addJs("global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js");
+        $this->assets->addJs("pages/scripts/components-date-time-pickers.min.js");
         $this->assets->addJs("pages/scripts/log_callog.js");
+        
+        // AdminLTE3 DataTables CSS
+        $this->assets->addCss("adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css");
+        $this->assets->addCss("adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css");
+        $this->assets->addCss("adminlte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css");
+        $this->assets->addCss("global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css");
+        $this->assets->addCss("pages/css/log_calllog.css");
         $reason = [$this->lang['ok'],$this->lang['notexist'],$this->lang['nothave'],$this->lang['sendstop'],$this->lang['rcvdstop'],$this->lang['sndlevel'],$this->lang['rcvdlevel']];
  
         $conn = $this->connectKamailioDB();

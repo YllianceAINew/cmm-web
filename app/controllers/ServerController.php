@@ -153,7 +153,7 @@ class ServerController extends ControllerUIBase
 
         $adminMembers = AdminMemberModel::find();
         $this->view->members = $adminMembers;
-        $this->view->aclList = array("첫 페지", "봉사기관리", "가입자관리", "리력관리");
+        $this->view->aclList = array("first ", "server", "user", "log");
     }
 
     public function addAction($id = 0)
@@ -164,10 +164,10 @@ class ServerController extends ControllerUIBase
 
         $registerForm = new RegisterSystemAccountKpForm($id);
         $this->view->resources = array(
-                "0" => "첫 페지", 
-                "1" =>"봉사기관리", 
-                "2" => "가입자관리", 
-                "3" => "리력관리");
+                "0" => "first page", 
+                "1" =>"server setting", 
+                "2" => "user manage", 
+                "3" => "log manage");
         $list = array("server/index","member/register","log/calllog");
         $this->view->form = $registerForm;
         $this->view->id = $id;
@@ -209,7 +209,7 @@ class ServerController extends ControllerUIBase
         $this->assets->addJs("pages/scripts/form-input-mask.js");
         $this->assets->addJs("pages/scripts/ui-blockui.js");
         $this->assets->addJs("pages/scripts/server_serversetting.js");
-//봉사기상태
+
         if($this->request->isPost()){
             $restart = $this->request->getPost("restart");
             $setType = $this->request->getPost("setType");
