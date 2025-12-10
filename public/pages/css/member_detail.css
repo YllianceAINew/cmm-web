@@ -1,66 +1,54 @@
-    #saveEdit {
-        height: 26px;
-        width: 112px;
-        padding-left: 13px;
-        letter-spacing: 10px;
-        background: url(/adminpage/login/btn_noicon.png) no-repeat;
-        border-style: none;
-        color: #6b8db1;
-        float:right;margin-right:30px;
-        font-weight: bold;
-    }
-    #cancel, #cancel:hover {
-        text-decoration: none;
-        height: 26px;
-        width: 112px;
-        padding-left: 13px;
-        letter-spacing: 10px;
-        background: url(/adminpage/login/btn_noicon.png) no-repeat;
-        border-style: none;
-        color: #6b8db1;
-        padding: 3px 0px 3px 0px;
-        font-weight: bold;
-    }
-    #cancel{
-        float:right;
-        margin-right:7%;
-        text-align:center;
-    }
-    .member-normal, .member-detail{
-        border: 1px solid #808080;
-        margin-bottom: 30px;
-        padding: 0px 50px 10px 50px;
-        font-size: 16px;
-        margin-right: 30px;
-    }
-    .member-normal .row, .member-detail .row{
-        margin: 0 10px 10px 10px;
-        margin: -10px 0 20px 10px;
-    }
-    .member-normal .left-pane,
-    .member-normal .right-pane,
-    .member-detail .left-pane,
-    .member-detail .right-pane{
-        padding-left: 10px;
-        padding-right: 0px;
-    }
-    .member-normal label,.member-detail label{
+/* Member Detail Page - AdminLTE 3 Styling */
+
+/* Ensure form-control-plaintext displays properly */
+.form-control-plaintext {
+    padding: 0.375rem 0;
+    margin-bottom: 0;
+    line-height: 1.5;
+    color: #495057;
+    background-color: transparent;
+    border: solid transparent;
+    border-width: 1px 0;
+}
+
+/* Status image styling */
+.form-control-plaintext img {
+    vertical-align: middle;
+}
+
+/* Card spacing */
+.card {
+    margin-bottom: 1.5rem;
+}
+
+/* Form group spacing in cards */
+.card-body .form-group {
+    margin-bottom: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .card-footer .btn {
         width: 100%;
-        padding-left: 10px;
-        margin-bottom: 10px;
-        border-bottom: 1px solid #ddd;
+        margin-bottom: 0.5rem;
     }
-    #loginfo{
-        border: 1px solid;
-        padding: 3px 40px;
-        background-color: #922330;
-        color: white;
-        margin-top: -7px;
+    
+    .card-footer .float-right {
+        float: none !important;
     }
-    #normalinfo{
-        border: 1px solid;
-        padding: 3px 40px;
-        background-color: #5367D3;
-        color: white;
-        margin-top: -7px;
-    }
+}
+
+/* Ensure proper checkbox alignment */
+.form-check {
+    padding-left: 1.5rem;
+}
+
+.form-check-input {
+    margin-top: 0.25rem;
+    margin-left: -1.5rem;
+}
+
+/* Select dropdown styling */
+#levelSelect {
+    max-width: 100%;
+}

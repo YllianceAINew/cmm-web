@@ -3,113 +3,263 @@
     var baseUrl = '{{url("")}}';
 </script>
 
-<!-- BEGIN CONTENT -->
-<div class="page-content-wrapper">
-    <!-- BEGIN CONTENT BODY -->
-    <div class="page-content" >
-        <div>                            <!-- class="portlet light bordered" -->
-            <div class="portlet-body">
-                <div class="tab-content">
-                    <h3>{{ lang._('summary_detail_title') }}</h3>
-                    <div class="div-view row">
-                        <div class="member-normal col-md-5 col-sm-5">
-                            <div class="row">
-                                <span id="normalinfo">{{ lang._('summary_detail_mormal') }}</span>
-                            </div>
-                            <div class="col-md-5 col-sm-5 left-pane">
-                                <label>{{ lang._('name') }} :</label><br>
-                                <label>{{ lang._('detail_gender') }} </label><br>
-                                <label>{{ lang._('detail_birth') }} </label><br>
-                                <label>{{ lang._('detail_address') }} </label><br>
-                                <label>{{ lang._('detail_factory') }} </label><br>
-                                <label>{{ lang._('detail_citynum') }} </label><br>
-                                <label>{{ lang._('detail_region') }}</label><br>
-                                <label>{{ lang._('detail_type') }} </label><br>
-                                <label>{{ lang._('detail_phone') }} </label><br>
-                                <label>{{ lang._('detail_imsi') }}</label><br>
-                                <label>{{ lang._('detail_imei') }}</label>
-                            </div>
-                            <div class="col-md-7 col-sm-7 right-pane">
-                                <label>{{member.name}}</label><br>
-                                <label>{% if member.gender == 0 %}{{ lang._('register_boy') }}{% else %}{{ lang._('register_girl') }}{% endif %}</label><br>
-                                <label>{% if member.birthday != '' %}{{member.birthday}}{% else %}<span style="font-style:italic;color:#aaa">{{ lang._('detail_undefined') }}</span>{% endif %}</label><br>
-                                <label>{% if member.address != '' %}{{member.address}}{% else %}<span style="font-style:italic;color:#aaa">{{ lang._('detail_undefined') }}</span>{% endif %}</label><br>
-                                <label>{% if member.job != '' %}{{member.job}}{% else %}<span style="font-style:italic;color:#aaa">{{ lang._('detail_undefined') }}</span>{% endif %}</label><br>
-                                <label>{% if member.citizenNum != '' %}{{member.citizenNum}}{% else %}<span style="font-style:italic;color:#aaa">{{ lang._('detail_undefined') }}</span>{% endif %}</label><br>
-                                <label>{% if member.region != '' %}{{member.region}}{% else %}<span style="font-style:italic;color:#aaa">{{ lang._('detail_undefined') }}</span>{% endif %}</label><br>
-                                <label>{% if member.phoneType != '' %}{{member.phoneType}}{% else %}<span style="font-style:italic;color:#aaa">{{ lang._('detail_undefined') }}</span>{% endif %}</label><br>
-                                <label>{{member.phone}}</label><br>
-                                <label>{{member.imsi}}</label><br>
-                                <label>{{member.imei}}</label>
+<!-- Member Detail Page -->
+<div class="row">
+    <!-- Normal Information Card -->
+    <div class="col-md-6">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <i class="fas fa-user mr-1"></i>
+                    {{ lang._('summary_detail_mormal') }}
+                </h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>{{ lang._('name') }}</label>
+                            <div class="form-control-plaintext">{{ member.name }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{{ lang._('detail_gender') }}</label>
+                            <div class="form-control-plaintext">
+                                {% if member.gender == 0 %}{{ lang._('register_boy') }}{% else %}{{ lang._('register_girl') }}{% endif %}
                             </div>
                         </div>
-                        <div class="member-detail col-md-6 col-sm-6">
-                            <div class="row">
-                                <span id="loginfo">{{ lang._('summary_detail_loginfo') }}</span>
-                            </div>
-                            <div class="col-md-5 col-sm-5 left-pane">
-                                <label>{{ lang._('summary_detail_state') }}</label><br>
-                                <label>{{ lang._('summary_detail_id') }} </label><br>
-                                <label>{{ lang._('userid') }}:</label><br>
-                                <label>{{ lang._('summary_detail_date') }} </label><br>
-                                <label>{{ lang._('summary_detail_lastdate') }} </label><br>
-                                <label>{{ lang._('summary_detail_stop') }} </label><br>
-                                <label>{{ lang._('summary_detail_group') }}</label>
-                            </div>
-                            <div class="col-md-7 col-sm-7 right-pane">
-                                <?php
-                                    $offline = 1;
-                                    $presence = PresencesModel::findFirstByusername($member->username);
-                                    if($presence)
-                                        $offline = 0;
-                                    if($member->state != 1)
-                                        $offline = 0;
-                                    if(!$member->UserListModel)
-                                        $offline = 0;
-
-                                    if($offline == 0)
-                                        $img_name = "offline.gif";
-                                    else
-                                        $img_name = "online.gif";
-                                ?>
-                                <label><img src="{{url('')}}/pages/img/<?php echo $img_name;?>"></label><br>
-                                <label id="editUserName">{{member.username}}</label><br>
-                                <label>{{member.userid}}</label><br>
-                                <label><?php echo date("Y.m.d H:i:s", $member->UserListModel->creationDate/1000) ?></label><br>
-                                <label><?php echo date("Y.m.d H:i:s", $member->UserListModel->modificationDate/1000) ?></label><br>
-                                <label><?php
-                                    $splits = explode(":", $member->UserListModel->email);
-                                    if ($member->UserListModel->username != 'admin'){
-                                        if ($splits[0] == '0')
-                                            echo "<input type='checkbox'/>";
-                                        else
-                                            echo "<input type='checkbox' checked/>";
-                                    }?></label><br>
-                                <label>{% if member.username != 'admin' %}
-                                    <select class="bs-select">
-                                        {% for level in lvSet %}
-                                        <?php
-                                        if (count($splits) > 1) {
-                                            if ($splits[1] == $level)
-                                                echo '<option id="'.$level.'" value="'.$level.'" selected>'.$level.'</option>';
-                                            else
-                                                echo '<option id="'.$level.'" value="'.$level.'">'.$level.'</option>';
-                                        } else
-                                            echo '<option id="'.$level.'" value="'.$level.'">'.$level.'</option>';
-                                        ?>
-                                        {% endfor %}
-                                    </select>
-                                {% endif %}</label>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{{ lang._('detail_birth') }}</label>
+                            <div class="form-control-plaintext">
+                                {% if member.birthday != '' %}{{ member.birthday }}{% else %}<span class="text-muted font-italic">{{ lang._('detail_undefined') }}</span>{% endif %}
                             </div>
                         </div>
-                            <div class="member-button row">
-                                <a id="cancel" href="{{url('member/summary')}}">{{ lang._('btn_cancel') }}</a>
-                                <button id="saveEdit" onclick="onSaveEdit('{{ lang._('setlevel_msg_save') }}')">{{ lang._('btn_allow') }}</button><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>{{ lang._('detail_address') }}</label>
+                            <div class="form-control-plaintext">
+                                {% if member.address != '' %}{{ member.address }}{% else %}<span class="text-muted font-italic">{{ lang._('detail_undefined') }}</span>{% endif %}
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{{ lang._('detail_factory') }}</label>
+                            <div class="form-control-plaintext">
+                                {% if member.job != '' %}{{ member.job }}{% else %}<span class="text-muted font-italic">{{ lang._('detail_undefined') }}</span>{% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{{ lang._('detail_citynum') }}</label>
+                            <div class="form-control-plaintext">
+                                {% if member.citizenNum != '' %}{{ member.citizenNum }}{% else %}<span class="text-muted font-italic">{{ lang._('detail_undefined') }}</span>{% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{{ lang._('detail_region') }}</label>
+                            <div class="form-control-plaintext">
+                                {% if member.region != '' %}{{ member.region }}{% else %}<span class="text-muted font-italic">{{ lang._('detail_undefined') }}</span>{% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{{ lang._('detail_type') }}</label>
+                            <div class="form-control-plaintext">
+                                {% if member.phoneType != '' %}{{ member.phoneType }}{% else %}<span class="text-muted font-italic">{{ lang._('detail_undefined') }}</span>{% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>{{ lang._('detail_phone') }}</label>
+                            <div class="form-control-plaintext">{{ member.phone }}</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>{{ lang._('detail_imsi') }}</label>
+                            <div class="form-control-plaintext">{{ member.imsi }}</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>{{ lang._('detail_imei') }}</label>
+                            <div class="form-control-plaintext">{{ member.imei }}</div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <!-- /.card-body -->
         </div>
-    </div> 
- <!-- page-content -->
+        <!-- /.card -->
+    </div>
+    <!-- /.col-md-6 -->
+
+    <!-- Login Information Card -->
+    <div class="col-md-6">
+        <div class="card card-info">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <i class="fas fa-info-circle mr-1"></i>
+                    {{ lang._('summary_detail_loginfo') }}
+                </h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <?php
+                    $offline = 1;
+                    $presence = PresencesModel::findFirstByusername($member->username);
+                    if($presence)
+                        $offline = 0;
+                    if($member->state != 1)
+                        $offline = 0;
+                    if(!$member->UserListModel)
+                        $offline = 0;
+
+                    if($offline == 0)
+                        $img_name = "offline.gif";
+                    else
+                        $img_name = "online.gif";
+                    
+                    $splits = explode(":", $member->UserListModel->email);
+                ?>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>{{ lang._('summary_detail_state') }}</label>
+                            <div class="form-control-plaintext">
+                                <img src="{{url('')}}/pages/img/<?php echo $img_name;?>" alt="Status" style="height: 20px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{{ lang._('summary_detail_id') }}</label>
+                            <div class="form-control-plaintext" id="editUserName">{{ member.username }}</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{{ lang._('userid') }}</label>
+                            <div class="form-control-plaintext">{{ member.userid }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{{ lang._('summary_detail_date') }}</label>
+                            <div class="form-control-plaintext">
+                                <?php echo date("Y.m.d H:i:s", $member->UserListModel->creationDate/1000) ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{{ lang._('summary_detail_lastdate') }}</label>
+                            <div class="form-control-plaintext">
+                                <?php echo date("Y.m.d H:i:s", $member->UserListModel->modificationDate/1000) ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% if member.username != 'admin' %}
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>{{ lang._('summary_detail_stop') }}</label>
+                            <div class="form-check">
+                                <?php
+                                if ($member->UserListModel->username != 'admin'){
+                                    if ($splits[0] == '0')
+                                        echo '<input type="checkbox" class="form-check-input" id="isBlock">';
+                                    else
+                                        echo '<input type="checkbox" class="form-check-input" id="isBlock" checked>';
+                                }
+                                ?>
+                                <label class="form-check-label" for="isBlock">
+                                    {{ lang._('summary_detail_stop') }}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="levelSelect">{{ lang._('summary_detail_group') }}</label>
+                            <select class="form-control" id="levelSelect">
+                                {% for level in lvSet %}
+                                <?php
+                                if (count($splits) > 1) {
+                                    if ($splits[1] == $level)
+                                        echo '<option value="'.$level.'" selected>'.$level.'</option>';
+                                    else
+                                        echo '<option value="'.$level.'">'.$level.'</option>';
+                                } else
+                                    echo '<option value="'.$level.'">'.$level.'</option>';
+                                ?>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col-md-6 -->
+</div>
+<!-- /.row -->
+
+<!-- Action Buttons -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-footer">
+                <a href="{{url('member/summary')}}" class="btn btn-secondary">
+                    <i class="fas fa-times mr-1"></i>{{ lang._('btn_cancel') }}
+                </a>
+                {% if member.username != 'admin' %}
+                <button type="button" id="saveEdit" class="btn btn-primary float-right" onclick="onSaveEdit('{{ lang._('setlevel_msg_save') }}')">
+                    <i class="fas fa-save mr-1"></i>{{ lang._('btn_allow') }}
+                </button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 </div>

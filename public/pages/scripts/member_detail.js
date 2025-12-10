@@ -1,8 +1,8 @@
 var onSaveEdit = function(msg){
 	if (!confirm(msg))
 		return;
-	isBlock = $(".member-detail").find("[type='checkbox']").is(":checked");
-	level = $(".bs-select").val();
+	isBlock = $("#isBlock").is(":checked");
+	level = $("#levelSelect").val();
 	$.ajax({
 		type : 'POST',
 		url : baseUrl + "member/saveEdit",
