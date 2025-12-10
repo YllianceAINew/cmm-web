@@ -208,11 +208,12 @@ $(document).ready(function () {
             location.href = location.href;
         }
         else
-            $("#deletelog h5").text("선택된 대화리력들을 삭제하겠습니까?");
+            $("#deleteLogMessage").text("선택된 대화리력들을 삭제하겠습니까?");
     });
 
      $(".deleteTextBtn").click(function(){
-        $("#deleteTextId").text($(this).parent().parent().find("[class='childChecks']").text());
+        var id = $(this).attr("data-id");
+        $("#deleteTextId").text(id);
     });
 
 });

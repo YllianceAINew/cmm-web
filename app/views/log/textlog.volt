@@ -21,63 +21,68 @@
         <div class="row mb-3">
             <div class="col-md-12 text-right">
                 <button id="searchlog" class="btn btn-primary btn-sm" data-toggle="modal" href="#searchLog">
-                    <i class="fas fa-search mr-1"></i>{{ lang._('btn_search') }}
+                    <i class="fas fa-search mr-1"></i>
+                    {{ lang._('btn_search') }}
                 </button>
                 <button id="deletelog" class="btn btn-danger btn-sm" data-toggle="modal" href="#deleteLog">
-                    <i class="fas fa-trash mr-1"></i>{{ lang._('btn_delete') }}
+                    <i class="fas fa-trash mr-1"></i>
+                    {{ lang._('btn_delete') }}
                 </button>
             </div>
         </div>
         <div class="table-responsive">
             <table class="table table-striped table-bordered table-hover" id="sample_1">
-                            <thead>
-                                <tr class="table-head">
-                                    <th width='3%'>
-                                        <input type= "checkbox" id="selectAllChk">
-                                    </th>
-                                    <th width='3%'>{{ lang._('no') }}</th>
-                                    <th  width='7%'>{{ lang._('textlog_thead_sender') }}</th>
-                                    <th  width='7%'>{{ lang._('textlog_thead_rcvd') }}</th>
-                                    <th  width='7%'>{{ lang._('textlog_modal_type') }}</th>
-                                    <th  width='25%'>{{ lang._('textlog_thead_body') }}</th>
-                                    <th  width='10%'>{{ lang._('textlog_thead_sendtime') }}</th>
-                                    <th  width='10%'>{{ lang._('textlog_thead_rcvdtime') }}</th>
-                                    <th  width='13%'>{{ lang._('textlog_thead_result') }}</th>
-                                    <th  width='3%'>{{ lang._('delete') }}</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for i, hist in histories %}
-                            <?php
-                                $splits = explode("_", $hist['Body']);
-                                $body = "";
-                                if(count($splits) >= 5)
-                                    {
-                                        for($j = 4;$j <= count($splits)-1;$j ++)
-                                            $body .= $splits[$j]."_";
-                                        $body = substr($body, 0,strlen($body)-1);
-                                    }
-                                 else
-                                    $body = $hist['Body'];
-                            ?>
-                                <tr class="odd gradeX">
-                                    <td class="hasCheckTD">
-                                        <input type= "checkbox" class="childChecks" dataVal="{{hist['No']}}"/>
-                                    </td>
-                                     <input type = "hidden" class="logno" value="{{hist['No']}}"/>
-                                    <td>{{ i + 1 }}</td>
-                                    <td>{{ hist['FromUser'] }}</td>
-                                    <td>{{ hist['ToUser'] }}</td>
-                                    <td>{{ fileType[ hist['Type'] ] }}</td>
-                                    <td>{{ body }}</td>
-                                    <td>{{ hist['SentTime'] }}</td>
-                                    <td>{{ hist['RcvdTime'] }}</td>
-                                    <td>{{ reason[hist['Reason']] }}</td>
-                                    <td> <a><img src="{{url('')}}pages/img/delete.gif" data-toggle="modal" href = "#delete"></a> </td>
-                                </tr>
-                                {% endfor %}
-
-                            </tbody>
+                <thead>
+                    <tr>
+                        <th style="width: 40px;">
+                            <input type="checkbox" id="selectAllChk">
+                        </th>
+                        <th style="width: 50px;">{{ lang._('no') }}</th>
+                        <th style="width: 100px;">{{ lang._('textlog_thead_sender') }}</th>
+                        <th style="width: 100px;">{{ lang._('textlog_thead_rcvd') }}</th>
+                        <th style="width: 100px;">{{ lang._('textlog_modal_type') }}</th>
+                        <th>{{ lang._('textlog_thead_body') }}</th>
+                        <th style="width: 150px;">{{ lang._('textlog_thead_sendtime') }}</th>
+                        <th style="width: 150px;">{{ lang._('textlog_thead_rcvdtime') }}</th>
+                        <th style="width: 120px;">{{ lang._('textlog_thead_result') }}</th>
+                        <th style="width: 80px;" class="text-center">{{ lang._('delete') }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i, hist in histories %}
+                    <?php
+                        $splits = explode("_", $hist['Body']);
+                        $body = "";
+                        if(count($splits) >= 5)
+                        {
+                            for($j = 4;$j <= count($splits)-1;$j ++)
+                                $body .= $splits[$j]."_";
+                            $body = substr($body, 0,strlen($body)-1);
+                        }
+                        else
+                            $body = $hist['Body'];
+                    ?>
+                    <tr>
+                        <td class="hasCheckTD">
+                            <input type="checkbox" class="childChecks" dataVal="{{hist['No']}}"/>
+                            <input type="hidden" class="logno" value="{{hist['No']}}"/>
+                        </td>
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ hist['FromUser'] }}</td>
+                        <td>{{ hist['ToUser'] }}</td>
+                        <td>{{ fileType[ hist['Type'] ] }}</td>
+                        <td>{{ body }}</td>
+                        <td>{{ hist['SentTime'] }}</td>
+                        <td>{{ hist['RcvdTime'] }}</td>
+                        <td>{{ reason[hist['Reason']] }}</td>
+                        <td class="text-center">
+                            <a class="deleteTextBtn btn btn-sm btn-danger" data-toggle="modal" href="#delete" data-id="{{hist['No']}}" title="{{ lang._('delete') }}">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
             </table>
         </div>
     </div>
@@ -90,19 +95,32 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">{{ lang._('textlog_modal_del') }}</h4>
+                <h4 class="modal-title">
+                    <i class="fas fa-exclamation-triangle mr-1"></i>
+                    {{ lang._('textlog_modal_del') }}
+                </h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div id="delBody">
-                    <p>{{ lang._('textlog_msg_delete') }}</p>
+                    <div class="alert alert-warning">
+                        <i class="icon fas fa-exclamation-triangle"></i>
+                        {{ lang._('textlog_msg_delete') }}
+                    </div>
+                    <label id="deleteTextId" hidden></label>
                 </div>
             </div>
             <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal">{{ lang._('btn_cancel') }}</button>
-                <button type="submit" id="okBtn" class="btn btn-danger" onClick="onDeleteMsg({{hist['No']}})">{{ lang._('btn_ok') }}</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    <i class="fas fa-times mr-1"></i>
+                    {{ lang._('btn_cancel') }}
+                </button>
+                <button type="submit" id="okBtn" class="btn btn-danger" onClick="onDeleteMsg()">
+                    <i class="fas fa-trash mr-1"></i>
+                    {{ lang._('btn_ok') }}
+                </button>
             </div>
         </div>
     </div>
@@ -113,19 +131,31 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">{{ lang._('textlog_modal_del') }}</h4>
+                <h4 class="modal-title">
+                    <i class="fas fa-exclamation-triangle mr-1"></i>
+                    {{ lang._('textlog_modal_del') }}
+                </h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div id="delBody">
-                    <p>{{ lang._('textlog_msg_multidel') }}</p>
+                    <div class="alert alert-warning">
+                        <i class="icon fas fa-exclamation-triangle"></i>
+                        <span id="deleteLogMessage">{{ lang._('textlog_msg_multidel') }}</span>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal">{{ lang._('btn_cancel') }}</button>
-                <button type="submit" id="okBtn" class="btn btn-danger" onclick="onDeleteLog()">{{ lang._('btn_ok') }}</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    <i class="fas fa-times mr-1"></i>
+                    {{ lang._('btn_cancel') }}
+                </button>
+                <button type="submit" id="okBtn" class="btn btn-danger" onclick="onDeleteLog()">
+                    <i class="fas fa-trash mr-1"></i>
+                    {{ lang._('btn_ok') }}
+                </button>
             </div>
         </div>
     </div>
@@ -136,53 +166,59 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">{{ lang._('textlog_modal_search') }}</h4>
+                <h4 class="modal-title">
+                    <i class="fas fa-search mr-1"></i>
+                    {{ lang._('textlog_modal_search') }}
+                </h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div id="searchBody">
-                    <div class="row">
-                        <div class="col-md-3 text-right">
-                            <div class="form-group">
-                                <label class="form-label">{{ lang._('callog_modal_sendtime') }}</label>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">{{ lang._('callog_modal_sender') }}</label>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">{{ lang._('callog_modal_rcvd') }}</label>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">{{ lang._('callog_modal_body') }}</label>
-                            </div>
+                    <div class="form-group">
+                        <label for="sentFrom">{{ lang._('callog_modal_sendtime') }}</label>
+                        <div id="sent" class="input-group date-picker input-daterange" data-date="10/11/2012" data-date-format="yyyy-mm-dd">
+                            <input type="text" class="form-control" id="sentFrom" name="from" placeholder="{{ lang._('from') }}">
+                            <span class="input-group-addon">{{ lang._('from') }}</span>
+                            <input type="text" class="form-control" id="sentTo" name="to" placeholder="{{ lang._('to') }}">
                         </div>
-                        <div class="col-md-9">
-                            <div class="form-group">
-                                <div id="sent" class="input-group date-picker input-daterange" data-date="10/11/2012" data-date-format="yyyy-mm-dd">
-                                    <input type="text" class="form-control" id="sentFrom" name="from">
-                                    <span class="input-group-addon">{{ lang._('from') }}</span>
-                                    <input type="text" class="form-control" id="sentTo" name="to">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <input id="sender" type="text" class="form-control" placeholder="{{ lang._('callog_modal_sender') }}">
-                            </div>
-                            <div class="form-group">
-                                <input id="receiver" type="text" class="form-control" placeholder="{{ lang._('callog_modal_rcvd') }}">
-                            </div>
-                            <div class="form-group">
-                                <textarea id="text" type="text" class="form-control" placeholder="{{ lang._('callog_modal_body') }}"></textarea>
-                            </div>
-                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="sender">{{ lang._('callog_modal_sender') }}</label>
+                        <input id="sender" type="text" class="form-control" placeholder="{{ lang._('callog_modal_sender') }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="receiver">{{ lang._('callog_modal_rcvd') }}</label>
+                        <input id="receiver" type="text" class="form-control" placeholder="{{ lang._('callog_modal_rcvd') }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="text">{{ lang._('callog_modal_body') }}</label>
+                        <textarea id="text" class="form-control" rows="3" placeholder="{{ lang._('callog_modal_body') }}"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="typeSelect">{{ lang._('textlog_modal_type') }}</label>
+                        <select id="typeSelect" class="form-control">
+                            <option value="all">{{ lang._('all') }}</option>
+                            <option value="0">{{ lang._('messages') }}</option>
+                            <option value="1">{{ lang._('voice') }}</option>
+                            <option value="2">{{ lang._('videoRecord') }}</option>
+                            <option value="3">{{ lang._('imageRecord') }}</option>
+                            <option value="4">{{ lang._('music') }}</option>
+                            <option value="5">{{ lang._('video') }}</option>
+                            <option value="6">{{ lang._('image') }}</option>
+                        </select>
                     </div>
                 </div>
             </div>
             <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal">{{ lang._('btn_cancel') }}</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    <i class="fas fa-times mr-1"></i>
+                    {{ lang._('btn_cancel') }}
+                </button>
                 <button type="submit" id="okBtn" class="btn btn-primary" onclick="onSearchLog()">
-                    <i class="fas fa-search mr-1"></i>{{ lang._('btn_search') }}
+                    <i class="fas fa-search mr-1"></i>
+                    {{ lang._('btn_search') }}
                 </button>
             </div>
         </div>

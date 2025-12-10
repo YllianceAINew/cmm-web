@@ -76,16 +76,16 @@ class LogController extends ControllerUIBase
 
     //          대화리력         //
     public function textlogAction($sentFrom = "",$sentTo = "",$sender = "",$receiver = "",$text = "",$select = ""){
-        $this->assets->addCss("pages/css/log_textlog.css");
+        // $this->assets->addCss("pages/css/log_textlog.css");
         $this->assets->addJs("pages/scripts/log_textlog.js");
 
-        $this->assets->addCss("global/plugins/datatables/datatables.css");
-        $this->assets->addCss("global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css"); 
+        // $this->assets->addCss("global/plugins/datatables/datatables.css");
+        // $this->assets->addCss("global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css"); 
 
-        $this->assets->addJs("global/plugins/datatables/datatables.js");
-        $this->assets->addJs("global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js");
-        $this->assets->addJs("pages/scripts/components-date-time-pickers.min.js");
-        $this->assets->addJs("global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js");
+        // $this->assets->addJs("global/plugins/datatables/datatables.js");
+        // $this->assets->addJs("global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js");
+        // $this->assets->addJs("pages/scripts/components-date-time-pickers.min.js");
+        // $this->assets->addJs("global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js");
         $reason = [$this->lang['ok'],$this->lang['notexist'],$this->lang['nothave'],$this->lang['sendstop'],$this->lang['rcvdstop'],$this->lang['sndlevel'],$this->lang['rcvdlevel']];
         $fileType = [$this->lang['messages'],$this->lang['voice'],$this->lang['videoRecord'],$this->lang['imageRecord'],$this->lang['music'],$this->lang['video'],$this->lang['image']];
 
@@ -223,7 +223,6 @@ class LogController extends ControllerUIBase
         }
     }
 
-    //        호출리력          //
     public function calllogAction($sentFrom = "",$sentTo = "",$sender = "",$receiver = "") {
         // $this->assets->addCss("global/plugins/datatables/datatables.css");
         // $this->assets->addCss("global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css"); 
