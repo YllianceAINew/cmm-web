@@ -618,7 +618,7 @@ class ServerController extends ControllerUIBase
 
     public function sipserverAction() {
         $this->assets->addJs("pages/scripts/server_sipserver.js");
-        $this->assets->addCss("pages/css/server_sipserver.css");
+        // $this->assets->addCss("pages/css/server_sipserver.css");
 
         $this->assets->addJs("global/plugins/bootstrap-growl/jquery.bootstrap-growl.min.js");
 
@@ -665,7 +665,7 @@ class ServerController extends ControllerUIBase
 
     public function proxyserverAction() {
         $this->assets->addJs("pages/scripts/server_proxyserver.js");
-        $this->assets->addCss("pages/css/server_proxyserver.css");
+        // $this->assets->addCss("pages/css/server_proxyserver.css");
 
         $this->assets->addJs("global/plugins/bootstrap-growl/jquery.bootstrap-growl.min.js");
 
