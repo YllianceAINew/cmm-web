@@ -172,6 +172,8 @@
                         <div class="form-group">
                             <label>{{ lang._('summary_detail_id') }}</label>
                             <div class="form-control-plaintext" id="editUserName">{{ member.username }}</div>
+                            <input type="hidden" id="memberId" value="{{ member.id }}">
+                            <input type="hidden" id="memberName" value="{{ member.name }}">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -262,6 +264,9 @@
                     <i class="fas fa-times mr-1"></i>{{ lang._('btn_cancel') }}
                 </a>
                 {% if member.username != 'admin' %}
+                <button type="button" id="deleteMember" class="btn btn-danger" data-toggle="modal" data-target="#deleteMemberModal">
+                    <i class="fas fa-trash mr-1"></i>{{ lang._('btn_delete') }}
+                </button>
                 <button type="button" id="saveEdit" class="btn btn-primary float-right" onclick="onSaveEdit('{{ lang._('setlevel_msg_save') }}')">
                     <i class="fas fa-save mr-1"></i>{{ lang._('btn_allow') }}
                 </button>
@@ -270,3 +275,26 @@
         </div>
     </div>
 </div>
+
+<!-- Delete Member Modal -->
+{% if member.username != 'admin' %}
+<div class="modal fade" id="deleteMemberModal" tabindex="-1" role="dialog" aria-labelledby="deleteMemberModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteMemberModalLabel">{{ lang._('summary_modal_del') }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>{{ lang._('logUser') }}(<strong id="deleteMemberNameText"></strong>){{ lang._('str_cancel') }}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ lang._('btn_cancel') }}</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteMember">{{ lang._('btn_ok') }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}

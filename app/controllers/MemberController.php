@@ -162,15 +162,27 @@ class MemberController extends ControllerUIBase
         $id = $this->request->getPost("ID");
         if ($id) {
             $member = UserMemberModel::findFirstByid($id);
+            if (!$member) {
+                return "error";
+            }
+
+            /* For Temp */
+            if ($member->delete()) {
+                return "success";
+            } else {
+                return "error";
+            }
+            /* end of for Temp */
+            
             if (!$this->userservice->getUser($member->username)){
-                echo "error";
-                exit;
+                return "error";
             }
 
             /////////////     delete sip user    ///////////
             $kamId = $member->username; // $this->kamPrefix . trim ($id);
             if (empty ($kamId)) {
                $errcode = '1';
+               return "error";
             } else {
                 $data = array('user' => $kamId);
                 $params = http_build_query($data);
@@ -188,17 +200,21 @@ class MemberController extends ControllerUIBase
             /////////////     delete xmpp user    ///////////
             if ($member->username != "admin") {
                 $this->userservice->deleteUser($member->username);
-                $member->delete();
+                if ($member->delete()) {
+                    return "success";
+                } else {
+                    return "error";
+                }
+            } else {
+                return "error";
             }
-            exit;
         } else {
             $ids = $this->request->getPost("ids");
             foreach ($ids as $id) {
                 $member = UserMemberModel::findFirstByid($id);
 
                 if (!$this->userservice->getUser($member->username)){
-                    echo "error";
-                    exit;
+                    return "error";
                 }
                 /////////////     delete sip user    ///////////
                 $kamId = $member->username; // $this->kamPrefix . trim ($id);
@@ -223,11 +239,16 @@ class MemberController extends ControllerUIBase
                 /////////////     delete xmpp user    ///////////
                 if ($member->username != "admin") {
                     $this->userservice->deleteUser($member->username);
-                    $member->delete();
+                    if ($member->delete()) {
+                        return "success";
+                    } else {
+                        return "error";    
+                    }
                 }
+                return "error";
             }
         }
-        exit;
+        return "error";
     }
 
     public function setlevelAction()

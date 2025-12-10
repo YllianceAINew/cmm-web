@@ -112,7 +112,7 @@ function onSelDelete()
         },
         dataType: 'html',
         success: function(res){
-            location.href = location.href ;
+            // location.href = location.href ;
         },
         error: function() {
             console.log ("error");
@@ -142,8 +142,9 @@ function onDeleteMember(){
         },
         dataType: 'html',
         success: function(res){
+            console.log(res);
             if (res == "error")
-                alertbox("","조작이 실패했습니다.","warning");
+                alertbox("","delete Failed.","warning");
             else
                 location.href = location.href ;
         },
