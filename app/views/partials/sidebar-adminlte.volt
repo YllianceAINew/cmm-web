@@ -12,8 +12,11 @@
         <div class="image">
           <img src="{{ url('adminlte/dist/img/avatar.png') }}" class="img-circle elevation-2" alt="User Image">
         </div>
-        <div class="info">
-          <a href="#" class="d-block" data-toggle="dropdown" aria-expanded="false" role="button" aria-haspopup="true" aria-label="User menu">{{ authAdmin['name'] }}</a>
+        <div class="info d-flex align-items-center justify-content-between w-100">
+          <a href="#" class="d-block flex-grow-1" data-toggle="dropdown" aria-expanded="false" role="button" aria-haspopup="true" aria-label="User menu">{{ authAdmin['name'] }}</a>
+          <a class="btn btn-sm btn-link text-white ml-2" href="{{ url('session/end') }}" role="button" title="{{ lang._('menu_logout') }}" aria-label="{{ lang._('menu_logout') }}">
+            <i class="fas fa-sign-out-alt"></i>
+          </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left">
             <span class="dropdown-item dropdown-header">{{ authAdmin['name'] }}</span>
             <div class="dropdown-divider"></div>
