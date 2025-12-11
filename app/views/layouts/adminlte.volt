@@ -76,14 +76,54 @@
           <div class="col-sm-6">
             <h1 class="m-0">
               <?php
-                $fullTitle = $this->tag->getTitle();
-                if ($fullTitle) {
-                  // Extract page title (part after the pipe)
-                  $titleParts = explode('|', $fullTitle);
-                  $pageTitle = trim(end($titleParts));
-                  echo $pageTitle ?: 'Page';
+                // Use controller/action to determine title (prioritize route mapping)
+                $controller = $this->dispatcher->getControllerName();
+                $action = $this->dispatcher->getActionName();
+                $route = strtolower($controller . '/' . $action);
+                
+                // Map routes to language keys
+                $titleMap = [
+                  'dashboard/index' => $this->lang['menu_dashboard'],
+                  'server/index' => $this->lang['menu_server_list'],
+                  'server/serversetting' => $this->lang['menu_server_setting'],
+                  'server/xmppserver' => $this->lang['menu_xmpp_server'],
+                  'server/sipserver' => $this->lang['menu_sip_server'],
+                  'server/proxyserver' => $this->lang['menu_proxy_server'],
+                  'server/irregular' => $this->lang['menu_servermanager_irregular'],
+                  'server/mimetype' => $this->lang['menu_servermanager_mimetype'],
+                  'member/summary' => $this->lang['menu_member_summary'],
+                  'member/register' => $this->lang['menu_member_register'],
+                  'member/setlevel' => $this->lang['menu_member_level'],
+                  'member/levelList' => $this->lang['menu_level_list'],
+                  'log/calllog' => $this->lang['menu_call_log'],
+                  'log/textlog' => $this->lang['menu_text_log'],
+                  'log/signlog' => $this->lang['menu_sign_log'],
+                  'log/xmppHistory' => $this->lang['menu_xmpp_history'],
+                  'log/sipHistory' => $this->lang['menu_sip_history'],
+                ];
+                
+                if (isset($titleMap[$route])) {
+                  echo $titleMap[$route];
                 } else {
-                  // Fallback: use controller/action to determine title
+                  // Fallback: try to extract from tag title
+                  $fullTitle = $this->tag->getTitle();
+                  if ($fullTitle) {
+                    $titleParts = explode('|', $fullTitle);
+                    $pageTitle = trim(end($titleParts));
+                    echo $pageTitle ?: ucfirst($action);
+                  } else {
+                    echo ucfirst($action);
+                  }
+                }
+              ?>
+            </h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="{{ url('dashboard/index') }}">Home</a></li>
+              <li class="breadcrumb-item active">
+                <?php
+                  // Use controller/action to determine title (prioritize route mapping)
                   $controller = $this->dispatcher->getControllerName();
                   $action = $this->dispatcher->getActionName();
                   $route = strtolower($controller . '/' . $action);
@@ -96,6 +136,8 @@
                     'server/xmppserver' => $this->lang['menu_xmpp_server'],
                     'server/sipserver' => $this->lang['menu_sip_server'],
                     'server/proxyserver' => $this->lang['menu_proxy_server'],
+                    'server/irregular' => $this->lang['menu_servermanager_irregular'],
+                    'server/mimetype' => $this->lang['menu_servermanager_mimetype'],
                     'member/summary' => $this->lang['menu_member_summary'],
                     'member/register' => $this->lang['menu_member_register'],
                     'member/setlevel' => $this->lang['menu_member_level'],
@@ -107,48 +149,18 @@
                     'log/sipHistory' => $this->lang['menu_sip_history'],
                   ];
                   
-                  echo isset($titleMap[$route]) ? $titleMap[$route] : ucfirst($action);
-                }
-              ?>
-            </h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ url('dashboard/index') }}">Home</a></li>
-              <li class="breadcrumb-item active">
-                <?php
-                  $fullTitle = $this->tag->getTitle();
-                  if ($fullTitle) {
-                    // Extract page title (part after the pipe)
-                    $titleParts = explode('|', $fullTitle);
-                    $pageTitle = trim(end($titleParts));
-                    echo $pageTitle ?: 'Page';
+                  if (isset($titleMap[$route])) {
+                    echo $titleMap[$route];
                   } else {
-                    // Fallback: use controller/action to determine title
-                    $controller = $this->dispatcher->getControllerName();
-                    $action = $this->dispatcher->getActionName();
-                    $route = strtolower($controller . '/' . $action);
-                    
-                    // Map routes to language keys
-                    $titleMap = [
-                      'dashboard/index' => $this->lang['menu_dashboard'],
-                      'server/index' => $this->lang['menu_server_list'],
-                      'server/serversetting' => $this->lang['menu_server_setting'],
-                      'server/xmppserver' => $this->lang['menu_xmpp_server'],
-                      'server/sipserver' => $this->lang['menu_sip_server'],
-                      'server/proxyserver' => $this->lang['menu_proxy_server'],
-                      'member/summary' => $this->lang['menu_member_summary'],
-                      'member/register' => $this->lang['menu_member_register'],
-                      'member/setlevel' => $this->lang['menu_member_level'],
-                      'member/levelList' => $this->lang['menu_level_list'],
-                      'log/calllog' => $this->lang['menu_call_log'],
-                      'log/textlog' => $this->lang['menu_text_log'],
-                      'log/signlog' => $this->lang['menu_sign_log'],
-                      'log/xmppHistory' => $this->lang['menu_xmpp_history'],
-                      'log/sipHistory' => $this->lang['menu_sip_history'],
-                    ];
-                    
-                    echo isset($titleMap[$route]) ? $titleMap[$route] : ucfirst($action);
+                    // Fallback: try to extract from tag title
+                    $fullTitle = $this->tag->getTitle();
+                    if ($fullTitle) {
+                      $titleParts = explode('|', $fullTitle);
+                      $pageTitle = trim(end($titleParts));
+                      echo $pageTitle ?: ucfirst($action);
+                    } else {
+                      echo ucfirst($action);
+                    }
                   }
                 ?>
               </li>
