@@ -139,11 +139,11 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-md-12">
                         <p class="text-muted">{{ lang._('account_modal_hint') }}</p>
                     </div>
-                </div>
+                </div> -->
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">

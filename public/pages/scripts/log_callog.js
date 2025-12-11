@@ -46,32 +46,6 @@ $(function () {
             }
         },
         "buttons": [
-            {
-                text: '<i class="fas fa-search mr-1"></i>Search',
-                className: 'btn btn-primary btn-sm',
-                action: function (e, dt, node, config) {
-                    $("#searchLog").modal('show');
-                }
-            },
-            {
-                text: '<i class="fas fa-trash mr-1"></i>Delete',
-                className: 'btn btn-danger btn-sm',
-                action: function (e, dt, node, config) {
-                    // Check if any rows are selected
-                    var hasSelected = false;
-                    $(".childChecks").each(function () {
-                        if ($(this).is(":checked")) {
-                            hasSelected = true;
-                            return false;
-                        }
-                    });
-                    if (hasSelected) {
-                        $("#deleteLog").modal('show');
-                    } else {
-                        location.href = location.href;
-                    }
-                }
-            },
             "copy",
             "csv",
             "excel",
