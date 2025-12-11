@@ -17,17 +17,7 @@
           <a class="btn btn-sm btn-link text-white ml-2" href="{{ url('session/end') }}" role="button" title="{{ lang._('menu_logout') }}" aria-label="{{ lang._('menu_logout') }}">
             <i class="fas fa-sign-out-alt"></i>
           </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left">
-            <span class="dropdown-item dropdown-header">{{ authAdmin['name'] }}</span>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-user mr-2"></i> {{ lang._('menu_profile') }}
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="{{ url('session/end') }}" class="dropdown-item">
-              <i class="fas fa-sign-out-alt mr-2"></i> {{ lang._('menu_logout') }}
-            </a>
-          </div>
+          
         </div>
       </div>
 
@@ -217,14 +207,6 @@
       </nav>
       <!-- /.sidebar-menu -->
       
-      <!-- Sidebar Footer -->
-      <div class="sidebar-footer mt-auto pb-3">
-        <div class="d-flex justify-content-center">
-          <a class="btn btn-sm btn-link text-white" href="#" data-widget="fullscreen" role="button" title="Toggle Fullscreen" aria-label="Toggle Fullscreen">
-            <i class="fas fa-expand-arrows-alt"></i>
-          </a>
-        </div>
-      </div>
     </div>
     <!-- /.sidebar -->
   </aside>
