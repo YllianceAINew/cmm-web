@@ -11,8 +11,6 @@
   <link rel="stylesheet" href="{{ url('adminlte/plugins/fontawesome-free/css/all.min.css') }}">
   <!-- AdminLTE Theme style -->
   <link rel="stylesheet" href="{{ url('adminlte/dist/css/adminlte.min.css') }}">
-  <!-- Custom Layout Styles (No Navbar) -->
-  <link rel="stylesheet" href="{{ url('adminlte/custom/layout-no-navbar.css') }}">
   
   <!-- Dynamic CSS Assets -->
   {{ assets.outputCss() }}
@@ -25,6 +23,41 @@
 
 <div class="wrapper">
 
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button" aria-label="Toggle Sidebar">
+          <i class="fas fa-bars"></i>
+        </a>
+      </li>
+    </ul>
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <!-- Notifications Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" aria-label="Notifications">
+          <i class="far fa-bell"></i>
+          <span class="badge badge-warning navbar-badge">0</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-item dropdown-header">0 Notifications</span>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item dropdown-footer">No new notifications</a>
+        </div>
+      </li>
+      <!-- Fullscreen Toggle -->
+      <li class="nav-item">
+        <a class="nav-link" data-widget="fullscreen" href="#" role="button" aria-label="Toggle Fullscreen">
+          <i class="fas fa-expand-arrows-alt"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.navbar -->
+
   <!-- Main Sidebar Container -->
   {{ partial("partials/sidebar-adminlte") }}
 
@@ -35,10 +68,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <button class="btn btn-link text-dark p-0 mr-2" data-widget="pushmenu" href="#" role="button" aria-label="Toggle Sidebar">
-              <i class="fas fa-bars"></i>
-            </button>
-            <h1 class="m-0 d-inline">{{ get_title() }}</h1>
+            <h1 class="m-0">{{ get_title() }}</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
