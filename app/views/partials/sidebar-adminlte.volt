@@ -32,6 +32,16 @@
       <nav class="mt-2 flex-grow-1">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           
+          <!-- Dashboard -->
+          <?php if (in_array("dashboard/index", $acceptAcl)){ ?>
+          <li class="nav-item">
+            <a href="{{ url('dashboard/index') }}" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>{{ lang._('menu_dashboard') }}</p>
+            </a>
+          </li>
+          <?php } ?>
+
           <!-- Server Manager -->
           <?php if (in_array("server/index", $acceptAcl) || in_array("server/serversetting", $acceptAcl) || in_array("server/xmppserver", $acceptAcl) || in_array("server/sipserver", $acceptAcl) || in_array("server/proxyserver", $acceptAcl)){ ?>
           <li class="nav-item">

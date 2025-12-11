@@ -5,6 +5,7 @@ class DashboardController extends ControllerUIBase
 	public function initialize()
 	{
 		$this->tag->setTitle($this->lang['menu_dashboard']);
+		$this->view->setLayout('adminlte');
         $this->persistent->regUnit = "1 days";
         $this->persistent->selRegYear = date("Y");
         $this->persistent->selRegYearTo = date("Y");
@@ -89,118 +90,75 @@ class DashboardController extends ControllerUIBase
 
     public function indexAction()
     {
-        // Dashboard removed - redirect to server index
-        return $this->response->redirect('server/index');
-        $this->assets->addJs("global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js");
-        $this->assets->addJs("global/plugins/amcharts/amcharts/amcharts.js");
-        $this->assets->addJs("global/plugins/amcharts/amcharts/serial.js");
-        $this->assets->addJs("global/plugins/amcharts/amcharts/pie.js");
-        $this->assets->addJs("global/plugins/amcharts/amcharts/radar.js");
-        $this->assets->addJs("global/plugins/amcharts/amcharts/themes/light.js");
-        $this->assets->addJs("global/plugins/amcharts/amcharts/themes/patterns.js");
-        $this->assets->addJs("global/plugins/amcharts/amcharts/themes/chalk.js");
-        $this->assets->addJs("global/plugins/flot/jquery.flot.min.js");
-        $this->assets->addJs("global/plugins/flot/jquery.flot.resize.min.js");
-        $this->assets->addJs("global/plugins/flot/jquery.flot.categories.min.js");
-
-        $this->assets->addJs("pages/scripts/components-date-time-pickers.min.js");
-        $this->assets->addJs("global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js");
-        $this->assets->addJs("pages/scripts/dashboard_index.js");
-        $this->assets->addCss("global/plugins/datatables/datatables.css");
-        $this->assets->addCss("global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css");
-        $this->assets->addCss("pages/css/dashboard_index.css");
-
-        $members = UserMemberModel::find();
-        $this->view->members = $members;
-
-
-        $ram = $this->system_mem();
-        $ram = explode("/", $ram);
-
-        if($ram[1] > 1024){
-            $ram[2] = ($ram[1]-$ram[0])/1024;
-            $ram[0] = $ram[0]/1024;
-            $ram[1] = $ram[1]/1024;   
-            $ram[3] = "gb";
-        }
-        else{
-            $ram[0] = $ram[0];
-            $ram[1] = $ram[1];
-            $ram[2] = $ram[1]-$ram[0];
-            $ram[3] = "mb";
-        }
-
-        $memories = $this->system_disk();
-        $memory = explode("/", $memories);
-
-        $cpu = $this->system_cpu();
-
-        $memory[0] = substr($memory[0], 0,strlen($memory[0]) - 1);
-        $memory[1] = substr($memory[1], 0,strlen($memory[1]) - 1);
-
-        $this->view->ram = $ram;
-        $this->view->memory = $memory;
-        $this->view->cpu = $cpu;
-
-        $data = getdate();
-    
-        /////    User Registration Status   /////
-        if($this->request->hasQuery("selRegYear")) {
-            if ($_GET["selRegYear"] != "")
-                $this->persistent->selRegYear =$_GET["selRegYear"];
-        }
-        if($this->request->hasQuery("selRegMonth")){
-            if (($_GET["selRegMonth"] != "")&&($_GET["selRegMonth"] != "undefined"))
-                $this->persistent->selRegMonth = $_GET["selRegMonth"];
-        }
-        if($this->request->hasQuery("RegType")){
-            if ($_GET["RegType"] != "")
-                $this->persistent->regUnit = $_GET["RegType"];
-        }
-        if($this->request->hasQuery("selRegYearTo")){
-            if (($_GET["selRegYearTo"] != "") && ($_GET["selRegYearTo"] != "undefined"))
-                $this->persistent->selRegYearTo = $_GET["selRegYearTo"];
-        }
-
-        $this->view->selRegYear = $this->persistent->selRegYear;
-        $this->view->selRegMonth = $this->persistent->selRegMonth;
-        $this->view->regUnit = $this->persistent->regUnit;
-        $this->view->selRegYearTo = $this->persistent->selRegYearTo;
-
-        $registerData = $this->RegisterChart();//print_r($this->RegisterChart());exit;
-        $this->view->registerData = $registerData;
-
-        //////   User Login Status   /////
-        if($this->request->hasQuery("selLogYear")) {
-            if ($_GET["selLogYear"] != "")
-                $this->persistent->selLogYear =$_GET["selLogYear"];
-        }
-        if($this->request->hasQuery("selLogMonth")){
-            if (($_GET["selLogMonth"] != "")&&($_GET["selLogMonth"] != "undefined"))
-                $this->persistent->selLogMonth = $_GET["selLogMonth"];
-        }
-        if($this->request->hasQuery("logType")){
-            if ($_GET["logType"] != "")
-                $this->persistent->logUnit = $_GET["logType"];
-        }
-        if($this->request->hasQuery("selLogYearTo")){
-            if (($_GET["selLogYearTo"] != "") && ($_GET["selLogYearTo"] != "undefined"))
-                $this->persistent->selLogYearTo = $_GET["selLogYearTo"];
-	    if($this->persistent->selLogYear > $this->persistent->selLogYearTo){              
-                $this->persistent->selLogYear = $this->persistent->selLogYearTo;
-            }
-        }
-
-        $this->view->selLogYear = $this->persistent->selLogYear;
-        $this->view->selLogMonth = $this->persistent->selLogMonth;
-        $this->view->logUnit = $this->persistent->logUnit;
-        $this->view->selLogYearTo = $this->persistent->selLogYearTo;
-        $loginData = $this->LoginChart();
-        $this->view->loginData = $loginData;
-        $this->view->typeSelect = ["1 days", "1 weeks", "1 months", "1 years"];
-        $this->view->typeName = [$this->lang['daily'],$this->lang['weekly'],$this->lang['monthly'],$this->lang['yearsly']];
-        $this->view->years = $this->persistent->yearList;
-        $this->view->months = ["1","2","3","4","5","6","7","8","9","10","11","12"];
+        // Load Chart.js
+        $this->assets->addJs("adminlte/plugins/chart.js/Chart.min.js");
+        
+        // Mock server data
+        $servers = [
+            [
+                'name' => 'XMPP Server',
+                'status' => 'online',
+                'cpu' => 45.2,
+                'ram' => 62.8,
+                'disk' => 34.5,
+                'network_in' => '125.4 MB/s',
+                'network_out' => '98.7 MB/s',
+                'uptime' => '15 days, 8 hours',
+                'last_check' => date('Y-m-d H:i:s', strtotime('-2 minutes'))
+            ],
+            [
+                'name' => 'HAProxy',
+                'status' => 'online',
+                'cpu' => 28.5,
+                'ram' => 41.3,
+                'disk' => 12.2,
+                'network_in' => '89.2 MB/s',
+                'network_out' => '76.5 MB/s',
+                'uptime' => '22 days, 14 hours',
+                'last_check' => date('Y-m-d H:i:s', strtotime('-1 minute'))
+            ],
+            [
+                'name' => 'SIP Server',
+                'status' => 'online',
+                'cpu' => 52.7,
+                'ram' => 58.9,
+                'disk' => 28.4,
+                'network_in' => '156.8 MB/s',
+                'network_out' => '142.3 MB/s',
+                'uptime' => '8 days, 3 hours',
+                'last_check' => date('Y-m-d H:i:s', strtotime('-3 minutes'))
+            ],
+            [
+                'name' => 'RTP Server',
+                'status' => 'offline',
+                'cpu' => 0.0,
+                'ram' => 0.0,
+                'disk' => 18.7,
+                'network_in' => '0 MB/s',
+                'network_out' => '0 MB/s',
+                'uptime' => '0 days, 0 hours',
+                'last_check' => date('Y-m-d H:i:s', strtotime('-15 minutes'))
+            ]
+        ];
+        
+        // Mock user metrics
+        $userMetrics = [
+            'total_users' => 12547,
+            'active_today' => 3421,
+            'new_signups_week' => 187,
+            'users_online' => 892
+        ];
+        
+        // Mock user growth chart data (last 12 months)
+        $userGrowthData = [
+            'labels' => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            'data' => [8500, 9200, 9800, 10200, 10800, 11200, 11500, 11800, 12000, 12200, 12350, 12547]
+        ];
+        
+        // Pass data to view
+        $this->view->servers = $servers;
+        $this->view->userMetrics = $userMetrics;
+        $this->view->userGrowthData = $userGrowthData;
     }
     
     public function system_cpu()
@@ -270,63 +228,4 @@ class DashboardController extends ControllerUIBase
         return $data;
     }
 
-    public function LoginChart(){
-        $data = array();
-
-        $logUnit = $this->persistent->logUnit;
-        $year = $this->persistent->selLogYear;
-        $month = $this->persistent->selLogMonth;
-        $yearTo = $this->persistent->selLogYearTo;
-        if($logUnit == "1 days"){
-            $searchFrom = $year."-".$month."-01";
-            $searchFrom = date_create($searchFrom);
-            $logTo = date_create($year."-".$month."-01");
-            $logTo->add(date_interval_create_from_date_string("1 months"));
-            $calender = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"];
-        }
-        if($logUnit == "1 months"){
-            $searchFrom = $year."-01-01";
-            $searchFrom = date_create($searchFrom);
-            $logTo = date_create($year."-01-01");
-            $logTo->add(date_interval_create_from_date_string("1 years"));
-            $calender = ["1","2","3","4","5","6","7","8","9","10","11","12"];
-        }
-        if($logUnit == "1 weeks"){
-            $searchFrom = $year."-".$month."-01";
-            $timeStamp = strtotime($searchFrom);
-            $week = getdate($timeStamp);
-            $wday = $week['wday']." days";
-            $searchFrom = date_create($searchFrom);
-            $searchFrom = date_sub($searchFrom, date_interval_create_from_date_string($wday));
-            $logTo = date_create($year."-".$month."-01");
-            $logTo->add(date_interval_create_from_date_string("1 months")); 
-            $calender = ["1","2","3","4","5"]; 
-        }
-        if($logUnit == "1 years"){
-            $searchFrom = $year."-01-01";
-            $searchFrom = date_create($searchFrom);
-            $logTo = date_create($yearTo."-01-01");
-            $logTo->add(date_interval_create_from_date_string("1 years"));
-            $calender=$this->persistent->yearList;
-        }
-        $searchTo = date_create($searchFrom->format("Y-m-d"));
-        $searchTo->add(date_interval_create_from_date_string($logUnit));
-        //echo $logTo->format("Y-m-d");exit;
-        for ($i = 0 ; $i < 31 ; $i ++) {
-            if($searchFrom < $logTo ){
-                $cond = "LoginDate >= '".$searchFrom->format("Y-m-d")."' and LoginDate < '".$searchTo->format("Y-m-d")."'";
-                $res = LoginCountModel::average([
-                    "conditions" => $cond,
-                    "column" => "LoginCount",
-                    "column" => "LoginCount",]);
-                if ($res)
-                    $data[$calender[$i]] = floor($res);
-		else
-			$data[$calender[$i]] = 0;
-                $searchFrom->add(date_interval_create_from_date_string($logUnit));
-                $searchTo->add(date_interval_create_from_date_string($logUnit));
-            }
-        }
-        return $data;
-    }
 }

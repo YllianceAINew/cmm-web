@@ -81,6 +81,7 @@ $di->set('volt', function ($view, $di) {
 
 	$compiler = $volt->getCompiler();
 	$compiler->addFunction('is_a', 'is_a');
+	$compiler->addFilter('number_format', 'number_format');
 
 	return $volt;
 }, true);

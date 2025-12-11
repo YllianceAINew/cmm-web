@@ -50,7 +50,8 @@ class SecurityPlugin extends Plugin
 				'layout'		=> array('index'),
 				'session'    	=> array('index','start','end','changepwd','savepwd','getTime'),
 				'member'		=> array('deleteUser', 'saveEdit', 'deleteMember', 'levelChanged', 'Block', 'insertLevel', 'editLevel', 'removeLevel', 'regDetail', 'detail'),
-				'server'    	=> array('delete', 'savenew', 'add', 'save')
+				'server'    	=> array('delete', 'savenew', 'add', 'save'),
+				'dashboard'	=> array('index')
 			);
 
 			foreach ($publicResources as $resource => $actions) {
