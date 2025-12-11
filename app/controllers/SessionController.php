@@ -17,9 +17,6 @@ class SessionController extends ControllerUIBase
     {
 		$this->view->setLayout('login-adminlte');
 		$this->view->pick('session/index-adminlte');
-		$this->assets->addJs("global/plugins/jquery-validation/js/jquery.validate.min.js");
-		$this->assets->addJs("global/plugins/jquery-validation/js/additional-methods.min.js");
-		$this->assets->addJs("global/plugins/backstretch/jquery.backstretch.min.js");
 		$this->assets->addCss("pages/css/session_index.css");
 		$this->assets->addJs("pages/scripts/session_index.js");
 		$this->view->cleanTemplateAfter();

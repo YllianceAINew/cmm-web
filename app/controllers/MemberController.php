@@ -43,7 +43,6 @@ class MemberController extends ControllerUIBase
         $this->assets->addJs("adminlte/plugins/datatables-buttons/js/buttons.print.min.js");
         $this->assets->addJs("adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js");
         
-        $this->assets->addJs("global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js");
         $this->assets->addJs("pages/scripts/member_summary.js");
         $this->assets->addJs("pages/scripts/components-date-time-pickers.min.js");
         
@@ -51,7 +50,6 @@ class MemberController extends ControllerUIBase
         $this->assets->addCss("adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css");
         $this->assets->addCss("adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css");
         $this->assets->addCss("adminlte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css");
-        $this->assets->addCss("global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css");
         $this->assets->addCss("pages/css/member_summary.css");
 
         $sentFrom = substr($sentFrom, 5, strlen($sentFrom) - 5);
@@ -94,9 +92,7 @@ class MemberController extends ControllerUIBase
     }
     
     public function detailAction($username = "") {
-        $this->assets->addCss("global/plugins/bootstrap-select/css/bootstrap-select.min.css");
         $this->assets->addCss("pages/css/member_detail.css");
-        $this->assets->addJs("global/plugins/bootstrap-select/js/bootstrap-select.min.js");
         $this->assets->addJs("pages/scripts/member_detail.js");
         if ($username == "")
             $this->request->forward("member/summary");
@@ -443,21 +439,12 @@ class MemberController extends ControllerUIBase
         $this->userservice->reloadLevel();
         exit;
     }
-    //          ici 2018.6.19          //
-    //          Registration Request Acceptance        //
     public function registerAction() {
-        // $this->assets->addCss("pages/css/member_register.css");
-        // $this->assets->addCss("global/plugins/datatables/datatables.css");
-
-        // $this->assets->addJs("global/plugins/datatables/datatables.js");
-        // $this->assets->addJs("global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js");
         $this->assets->addJs("pages/scripts/member_register.js");
         $users = UserMemberModel::findBystate("-1");
         $this->view->users = $users;
     }
 
-    //          ici 2018.6.19          //
-    //          Registration Detail Information        //
     public function regDetailAction($id = -1) {
         $this->assets->addCss("pages/css/member_regdetail.css");
         $this->assets->addJs("pages/scripts/member_regdetail.js");

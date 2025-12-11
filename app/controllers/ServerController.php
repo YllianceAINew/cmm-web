@@ -153,7 +153,6 @@ class ServerController extends ControllerUIBase
         $this->assets->addJs("adminlte/plugins/datatables-buttons/js/buttons.print.min.js");
         $this->assets->addJs("adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js");
         
-        $this->assets->addJs("global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js");
         $this->assets->addJs("pages/scripts/localization.js");
         $this->assets->addJs("pages/scripts/server_index.js");
         
@@ -161,7 +160,6 @@ class ServerController extends ControllerUIBase
         $this->assets->addCss("adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css");
         $this->assets->addCss("adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css");
         $this->assets->addCss("adminlte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css");
-        $this->assets->addCss("global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css");
 
         $adminMembers = AdminMemberModel::find();
         $this->view->members = $adminMembers;
@@ -170,8 +168,6 @@ class ServerController extends ControllerUIBase
 
     public function addAction($id = 0)
     {
-        $this->assets->addJs("global/plugins/jquery-validation/js/jquery.validate.min.js");
-        $this->assets->addJs("global/plugins/jquery-validation/js/additional-methods.min.js");
         $this->assets->addJs("pages/scripts/server_add.js");
 
         $registerForm = new RegisterSystemAccountKpForm($id);
@@ -208,18 +204,6 @@ class ServerController extends ControllerUIBase
         }
     }
     public function serversettingAction(){
-        // $this->assets->addCss("pages/css/serversetting.css");
-        // $this->assets->addCss("global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css");
-        // $this->assets->addCss("global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css");
-        
-        // $this->assets->addJs("global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js");
-        // $this->assets->addJs("global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js");
-        // $this->assets->addJs("global/plugins/jquery.input-ip-address-control-1.0.min.js");
-        // $this->assets->addJs("global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js");
-        // $this->assets->addJs("/global/plugins/jquery.blockui.min.js");
-        // $this->assets->addJs("pages/scripts/components-date-time-pickers.min.js");
-        // $this->assets->addJs("pages/scripts/form-input-mask.js");
-        // $this->assets->addJs("pages/scripts/ui-blockui.js");
         $this->assets->addJs("pages/scripts/server_serversetting.js");
 
         if($this->request->isPost()){
@@ -541,8 +525,6 @@ class ServerController extends ControllerUIBase
         $this->assets->addJs("pages/scripts/server_xmppserver.js");
         $this->assets->addCss("pages/css/server_xmppserver.css");
 
-        $this->assets->addJs("global/plugins/bootstrap-growl/jquery.bootstrap-growl.min.js");
-
         $haproxy = PropertyModel::findFirstByname("xmpp.haproxy.server");
         if (!$haproxy)
             $this->view->haproxy = array('ip' => "",
@@ -618,9 +600,6 @@ class ServerController extends ControllerUIBase
 
     public function sipserverAction() {
         $this->assets->addJs("pages/scripts/server_sipserver.js");
-        // $this->assets->addCss("pages/css/server_sipserver.css");
-
-        $this->assets->addJs("global/plugins/bootstrap-growl/jquery.bootstrap-growl.min.js");
 
         $kamIP = SipServerModel::findFirstByname("sip_main");
         $this->persistent->kamIP = $kamIP;
@@ -665,9 +644,6 @@ class ServerController extends ControllerUIBase
 
     public function proxyserverAction() {
         $this->assets->addJs("pages/scripts/server_proxyserver.js");
-        // $this->assets->addCss("pages/css/server_proxyserver.css");
-
-        $this->assets->addJs("global/plugins/bootstrap-growl/jquery.bootstrap-growl.min.js");
 
         $rtpengines = SipRtpModel::find();
         $this->persistent->rtpengines = $rtpengines;
@@ -1138,16 +1114,10 @@ class ServerController extends ControllerUIBase
     }
 
     public function irregularAction() {
-        $this->assets->addJs("global/plugins/datatables/datatables.js");
-        $this->assets->addJs("global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js");
-        $this->assets->addJs("global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js");
         $this->assets->addJs("pages/scripts/localization.js");
         
         $this->assets->addJs("pages/scripts/server_irregular.js");
         $this->assets->addCss("pages/css/server_irregular.css");
-        $this->assets->addCss("global/plugins/datatables/datatables.css");
-
-        $this->assets->addJs("global/plugins/bootstrap-growl/jquery.bootstrap-growl.min.js");
 
         $regular_list = IrregularModel::find();
         $this->view->words = $regular_list;
@@ -1196,16 +1166,10 @@ class ServerController extends ControllerUIBase
     }
   
     public function mimetypeAction() {
-        $this->assets->addJs("global/plugins/datatables/datatables.js");
-        $this->assets->addJs("global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js");
-        $this->assets->addJs("global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js");
         $this->assets->addJs("pages/scripts/localization.js");
         
         $this->assets->addJs("pages/scripts/server_mimetype.js");
         $this->assets->addCss("pages/css/server_mimetype.css");
-        $this->assets->addCss("global/plugins/datatables/datatables.css");
-
-        $this->assets->addJs("global/plugins/bootstrap-growl/jquery.bootstrap-growl.min.js");
         $mimetype_list = MimetypeModel::find();
         $this->view->mimetypes = $mimetype_list;
     }
