@@ -54,6 +54,12 @@
           <i class="fas fa-expand-arrows-alt"></i>
         </a>
       </li>
+      <!-- Dark Mode Toggle -->
+      <li class="nav-item">
+        <a class="nav-link" href="#" id="dark-mode-toggle" role="button" aria-label="Toggle Dark Mode" title="Toggle Dark Mode">
+          <i class="far fa-moon" id="dark-mode-icon"></i>
+        </a>
+      </li>
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -110,6 +116,7 @@
 
 <!-- Custom Scripts -->
 <script src="{{ url('adminlte/custom/sidebar-active.js') }}"></script>
+<script src="{{ url('adminlte/custom/dark-mode.js') }}"></script>
 
 <!-- Dynamic JS Assets -->
 {{ assets.outputJs() }}
